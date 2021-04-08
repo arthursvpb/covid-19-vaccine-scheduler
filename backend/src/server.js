@@ -1,5 +1,10 @@
+/* Environment */
 require('dotenv/config');
 
+/* Database */
+require('./database/connection');
+
+/* Imports */
 const express = require('express');
 const cors = require('cors');
 
