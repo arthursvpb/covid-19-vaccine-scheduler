@@ -13,6 +13,11 @@ const AppointmentController = {
   async create(req, res) {
     const { body } = req;
 
+    // const {
+    //   MAX_DAILY_APPOINTMENT_DISPONIBILITY,
+    //   MAX_APPOINTMENT_DISPONIBILITY_PER_TIME,
+    // } = process.env;
+
     try {
       const appointment = await Appointment.create(body);
 
