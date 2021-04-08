@@ -22,4 +22,4 @@ app.use(routes);
 
 /* Server */
 const { SERVER_PORT: PORT } = process.env;
-app.listen(PORT, () => console.log(`Server is listening at ${PORT}`));
+app.listen(PORT, () => console.log(`✨ Server is listening at ${PORT}`));
