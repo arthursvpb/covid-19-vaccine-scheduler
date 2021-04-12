@@ -3,26 +3,24 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-import format from 'date-fns/format';
+import { format } from 'date-fns';
 
 import api from '../../services/api';
 
 export default function CreateAppointment() {
   const [name, setName] = useState('');
   const [birthday, setBirthday] = useState('');
-  const [vaccinationDate, setVaccinationDate] = useState(new Date());
-  const [vaccinationTime, setVaccinationTime] = useState(new Date());
+  const [vaccinationDate, setVaccinationDate] = useState('');
+  const [vaccinationTime, setVaccinationTime] = useState('');
 
   const handleSubmit = async event => {
     event.preventDefault();
-
-    console.log(birthday);
 
     const appointmentForm = {
       name,
       birthday: format(birthday, 'dd-MM-yyyy'),
       vaccinationDate: format(vaccinationDate, 'dd-MM-yyyy'),
-      vaccinationTime: format(vaccinationTime, 'dd-MM-yyyy'),
+      vaccinationTime: format(vaccinationTime, 'h:mm aa'),
     };
 
     try {
@@ -78,12 +76,13 @@ export default function CreateAppointment() {
           <label htmlFor="vaccinationTime">
             vaccinationTime
             <DatePicker
-              showTimeSelect
-              name="vaccinationTime"
-              id="vaccinationTime"
               selected={vaccinationTime}
-              dateFormat="dd/MM/yyyy"
-              onChange={date => setVaccinationTime(date)}
+              onChange={time => setVaccinationTime(time)}
+              showTimeSelect
+              showTimeSelectOnly
+              timeIntervals={60}
+              timeCaption="Time"
+              dateFormat="h:mm aa"
             />
           </label>
         </fieldset>
