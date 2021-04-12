@@ -8,7 +8,7 @@ import CreateAppointment from './pages/Appointment/createAppointment';
 const routes = [
   {
     component: Home,
-    path: '/home',
+    path: '/',
     name: 'Home',
   },
   {

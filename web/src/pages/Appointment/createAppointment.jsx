@@ -26,7 +26,11 @@ export default function CreateAppointment() {
     try {
       const response = await api.post('/appointments', appointmentForm);
       alert(response.data.message);
-    } catch ({ message }) {
+    } catch ({
+      response: {
+        data: { message },
+      },
+    }) {
       alert(message);
     }
   };

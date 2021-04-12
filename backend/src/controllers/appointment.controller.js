@@ -12,11 +12,29 @@ const AppointmentController = {
   },
   async create(req, res) {
     const { body } = req;
+    const { vaccinationDate, vaccinationTime } = body;
+    const {
+      MAX_DAILY_APPOINTMENT_DISPONIBILITY,
+      MAX_APPOINTMENT_DISPONIBILITY_PER_TIME,
+    } = process.env;
 
-    // const {
-    //   MAX_DAILY_APPOINTMENT_DISPONIBILITY,
-    //   MAX_APPOINTMENT_DISPONIBILITY_PER_TIME,
-    // } = process.env;
+    // Check daily disponibility
+    const isDayAvailable =
+      (await Appointment.count({ vaccinationDate })) <
+      MAX_DAILY_APPOINTMENT_DISPONIBILITY;
+
+    if (!isDayAvailable) {
+      return res.status(400).json({ message: `This day isn't available.` });
+    }
+
+    // Check time disponibility
+    const isTimeAvailable =
+      (await Appointment.count({ vaccinationDate, vaccinationTime })) <
+      MAX_APPOINTMENT_DISPONIBILITY_PER_TIME;
+
+    if (!isTimeAvailable) {
+      return res.status(400).json({ message: `This time isn't available.` });
+    }
 
     try {
       const appointment = await Appointment.create(body);
