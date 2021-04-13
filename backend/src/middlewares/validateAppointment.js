@@ -16,7 +16,8 @@ const validateAppointment = async (req, res, next) => {
     vaccinationTime,
   });
 
-  scheduledPacients.forEach(scheduledPacient => {
+  // eslint-disable-next-line no-restricted-syntax
+  for (const scheduledPacient of scheduledPacients) {
     const scheduledPacientBirthday = parse(
       scheduledPacient.birthday,
       'dd-MM-yyyy',
@@ -28,16 +29,20 @@ const validateAppointment = async (req, res, next) => {
       scheduledPacientBirthday,
     );
 
+    // The new pacient is older and the scheduled pacient is not aged too.
     if (
       scheduledPacientAge < 60 &&
       pacientBirthday < scheduledPacientBirthday
     ) {
-      console.log(
-        'The new pacient is older and the scheduled pacient is not elder.',
-        // Appointment.findByIdAndUpdate(scheduledPacient._id, req.body),
-      );
+      // eslint-disable-next-line no-await-in-loop
+      await Appointment.findByIdAndUpdate(scheduledPacient._id, {
+        ...req.body,
+      });
+      return res.status(200).json({
+        message: `✅ You have priority! Created appointment successfully.`,
+      });
     }
-  });
+  }
 
   // Check daily disponibility
   const isDayAvailable =
