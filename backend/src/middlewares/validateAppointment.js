@@ -14,6 +14,7 @@ const validateAppointment = async (req, res, next) => {
   const scheduledPacients = await Appointment.find({
     vaccinationDate,
     vaccinationTime,
+    isConcluded: false,
   });
 
   // eslint-disable-next-line no-restricted-syntax
