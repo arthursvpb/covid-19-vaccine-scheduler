@@ -1,14 +1,18 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 
+import DatePicker from 'react-datepicker';
+
 import { Container, Paper, Typography } from '@material-ui/core';
 
-import { parse, differenceInCalendarYears } from 'date-fns';
+import { parse, differenceInCalendarYears, format } from 'date-fns';
 
 import api from '../../services/api';
 
 export default function index() {
   const [appointments, setAppointments] = useState([]);
+  const [filteredAppointments, setFilteredAppointments] = useState([]);
+  const [dateFilter, setDateFilter] = useState(new Date());
 
   useEffect(() => {
     api.get('/appointments').then(response => {
@@ -16,10 +20,30 @@ export default function index() {
     });
   }, []);
 
+  const handleDateFilterChange = date => {
+    const dateString = format(date, 'dd-MM-yyyy');
+
+    setFilteredAppointments(
+      appointments.filter(
+        ({ vaccinationDate }) => vaccinationDate === dateString,
+      ),
+    );
+
+    setDateFilter(date);
+  };
+
   return (
     <Container>
-      {appointments.map(
+      <DatePicker
+        name="dateFilter"
+        id="dateFilter"
+        selected={dateFilter}
+        dateFormat="dd-MM-yyyy"
+        onChange={handleDateFilterChange}
+      />
+      {filteredAppointments.map(
         ({
+          _id,
           name,
           birthday,
           vaccinationDate,
@@ -27,7 +51,7 @@ export default function index() {
           conclusion,
           isConcluded,
         }) => (
-          <Paper style={{ marginBottom: '20px' }}>
+          <Paper key={_id} style={{ marginBottom: '20px' }}>
             <Typography>{name}</Typography>
             <Typography>
               {differenceInCalendarYears(
@@ -38,7 +62,7 @@ export default function index() {
             <Typography>{vaccinationDate}</Typography>
             <Typography>{vaccinationTime}</Typography>
             <Typography>{conclusion}</Typography>
-            <Typography>{isConcluded}</Typography>
+            <Typography>{isConcluded ? 'Atendido' : 'Não atendido'}</Typography>
           </Paper>
         ),
       )}

@@ -6,7 +6,7 @@ const appointment = {
   vaccinationDate: { type: String, required: true },
   vaccinationTime: { type: String, required: true },
   isConcluded: { type: Boolean, default: false },
-  conclusion: { type: String, default: 'Unattended.' },
+  conclusion: { type: String, default: '' },
 };
 
 const AppointmentSchema = new mongoose.Schema(appointment, {
