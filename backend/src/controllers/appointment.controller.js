@@ -26,6 +26,20 @@ const AppointmentController = {
       return res.status(400).json({ message });
     }
   },
+  async update(req, res) {
+    const {
+      body,
+      params: { id },
+    } = req;
+
+    try {
+      await Appointment.updateOne({ _id: id }, { $set: { ...body } });
+
+      return res.status(200).json({ message: 'Updated successfully!' });
+    } catch ({ message }) {
+      return res.status(400).json({ message });
+    }
+  },
 };
 
 module.exports = AppointmentController;
