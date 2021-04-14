@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 import DatePicker from 'react-datepicker';
 
-import { Container, Paper, Typography } from '@material-ui/core';
+import { Container, Paper, Typography, Checkbox } from '@material-ui/core';
 
 import { parse, differenceInCalendarYears, format } from 'date-fns';
 
@@ -30,6 +30,23 @@ export default function index() {
     );
 
     setDateFilter(date);
+  };
+
+  const handleAppointmentChecked = (event, _id) => {
+    const { checked } = event.target;
+
+    const updatedAppointments = filteredAppointments.map(appointment => {
+      if (appointment._id === _id) {
+        return {
+          ...appointment,
+          isConcluded: checked,
+        };
+      }
+
+      return appointment;
+    });
+
+    setFilteredAppointments(updatedAppointments);
   };
 
   return (
@@ -63,6 +80,10 @@ export default function index() {
             <Typography>{vaccinationTime}</Typography>
             <Typography>{conclusion}</Typography>
             <Typography>{isConcluded ? 'Atendido' : 'Não atendido'}</Typography>
+            <Checkbox
+              checked={isConcluded}
+              onChange={event => handleAppointmentChecked(event, _id)}
+            />
           </Paper>
         ),
       )}
