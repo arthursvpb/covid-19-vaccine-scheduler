@@ -20,7 +20,8 @@
   "plugins": ["react", "prettier"],
   "rules": {
     "prettier/prettier": "error",
-    "no-console": 0
+    "no-console": 0,
+    "no-alert": 0
   },
   "settings": {
     "import/resolver": {

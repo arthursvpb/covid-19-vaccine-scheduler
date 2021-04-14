@@ -15,10 +15,18 @@ export default function index() {
   const [dateFilter, setDateFilter] = useState(new Date());
 
   useEffect(() => {
-    api.get('/appointments').then(response => {
-      setAppointments(response.data);
-    });
-  }, []);
+    api
+      .get('/appointments')
+      .then(response => {
+        setAppointments(response.data);
+      })
+      .catch(error => {
+        alert(
+          error.response?.data.message ||
+            `😓 Something went wrong! Is server down?`,
+        );
+      });
+  }, [filteredAppointments]);
 
   const handleDateFilterChange = date => {
     const dateString = format(date, 'dd-MM-yyyy');
@@ -32,7 +40,7 @@ export default function index() {
     setDateFilter(date);
   };
 
-  const handleAppointmentChecked = (event, _id) => {
+  const handleAppointmentChecked = async (event, _id) => {
     const { checked } = event.target;
 
     const updatedAppointments = filteredAppointments.map(appointment => {
@@ -46,7 +54,13 @@ export default function index() {
       return appointment;
     });
 
-    setFilteredAppointments(updatedAppointments);
+    try {
+      await api.put(`/appointments/${_id}`, { isConcluded: checked });
+
+      setFilteredAppointments(updatedAppointments);
+    } catch (error) {
+      alert(error.response?.data.message || `😓 Something went wrong!`);
+    }
   };
 
   return (
