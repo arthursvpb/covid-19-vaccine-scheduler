@@ -3,6 +3,16 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+import {
+  Container,
+  Grid,
+  Paper,
+  Typography,
+  TextField,
+  FormLabel,
+} from '@material-ui/core';
+// Layout, Drawer, List, ListItem, ListItemText, ListItemIcon
+
 import { format } from 'date-fns';
 
 import api from '../../services/api';
@@ -36,62 +46,71 @@ export default function CreateAppointment() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <fieldset
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-        >
-          <legend>New appointment</legend>
-          <label htmlFor="name">
-            Name
-            <input
-              type="text"
-              name="name"
-              id="name"
-              onChange={event => setName(event.target.value)}
-            />
-          </label>
+    <Container>
+      <Grid container>
+        <Grid item xs={12}>
+          <Paper>
+            <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+              <Typography variant="h3">Create new appointment</Typography>
+              <FormLabel button> Nome</FormLabel>
+              <TextField
+                label="Your name"
+                variant="outlined"
+                multiline
+                rows={4}
+                required
+              />
+              <legend>New appointment</legend>
+              <label htmlFor="name">
+                Name
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  onChange={event => setName(event.target.value)}
+                />
+              </label>
 
-          <label htmlFor="birthday">
-            Birthday
-            <DatePicker
-              name="birthday"
-              id="birthday"
-              selected={birthday}
-              dateFormat="dd/MM/yyyy"
-              onChange={date => setBirthday(date)}
-            />
-          </label>
+              <label htmlFor="birthday">
+                Birthday
+                <DatePicker
+                  name="birthday"
+                  id="birthday"
+                  selected={birthday}
+                  dateFormat="dd/MM/yyyy"
+                  onChange={date => setBirthday(date)}
+                />
+              </label>
 
-          <label htmlFor="vaccinationDate">
-            vaccinationDate
-            <DatePicker
-              name="vaccinationDate"
-              id="vaccinationDate"
-              selected={vaccinationDate}
-              dateFormat="dd/MM/yyyy"
-              onChange={date => setVaccinationDate(date)}
-            />
-          </label>
+              <label htmlFor="vaccinationDate">
+                vaccinationDate
+                <DatePicker
+                  name="vaccinationDate"
+                  id="vaccinationDate"
+                  selected={vaccinationDate}
+                  dateFormat="dd/MM/yyyy"
+                  onChange={date => setVaccinationDate(date)}
+                />
+              </label>
 
-          <label htmlFor="vaccinationTime">
-            vaccinationTime
-            <DatePicker
-              selected={vaccinationTime}
-              onChange={time => setVaccinationTime(time)}
-              showTimeSelect
-              showTimeSelectOnly
-              timeIntervals={60}
-              timeCaption="Time"
-              dateFormat="h:mm aa"
-            />
-          </label>
-        </fieldset>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+              <label htmlFor="vaccinationTime">
+                vaccinationTime
+                <DatePicker
+                  selected={vaccinationTime}
+                  onChange={time => setVaccinationTime(time)}
+                  showTimeSelect
+                  showTimeSelectOnly
+                  timeIntervals={60}
+                  timeCaption="Time"
+                  dateFormat="h:mm aa"
+                />
+              </label>
+
+              <button type="submit">Submit</button>
+            </form>
+          </Paper>
+        </Grid>
+      </Grid>
+    </Container>
   );
 }

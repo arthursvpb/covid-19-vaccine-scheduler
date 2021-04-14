@@ -1,6 +1,10 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 
+import { Container, Paper, Typography } from '@material-ui/core';
+
+import { parse, differenceInCalendarYears } from 'date-fns';
+
 import api from '../../services/api';
 
 export default function index() {
@@ -8,16 +12,36 @@ export default function index() {
 
   useEffect(() => {
     api.get('/appointments').then(response => {
-      console.log(response.data);
       setAppointments(response.data);
     });
   }, []);
 
   return (
-    <div>
-      {appointments.map(appointment => (
-        <h1>{appointment._id}</h1>
-      ))}
-    </div>
+    <Container>
+      {appointments.map(
+        ({
+          name,
+          birthday,
+          vaccinationDate,
+          vaccinationTime,
+          conclusion,
+          isConcluded,
+        }) => (
+          <Paper style={{ marginBottom: '20px' }}>
+            <Typography>{name}</Typography>
+            <Typography>
+              {differenceInCalendarYears(
+                new Date(),
+                parse(birthday, 'dd-MM-yyyy', new Date()),
+              )}
+            </Typography>
+            <Typography>{vaccinationDate}</Typography>
+            <Typography>{vaccinationTime}</Typography>
+            <Typography>{conclusion}</Typography>
+            <Typography>{isConcluded}</Typography>
+          </Paper>
+        ),
+      )}
+    </Container>
   );
 }
