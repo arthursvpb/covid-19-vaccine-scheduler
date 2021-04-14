@@ -30,7 +30,7 @@ export default function CreateAppointment() {
       name,
       birthday: format(birthday, 'dd-MM-yyyy'),
       vaccinationDate: format(vaccinationDate, 'dd-MM-yyyy'),
-      vaccinationTime: format(vaccinationTime, 'h:mm aa'),
+      vaccinationTime: format(vaccinationTime, 'HH:mm'),
     };
 
     try {
@@ -102,7 +102,8 @@ export default function CreateAppointment() {
                   showTimeSelectOnly
                   timeIntervals={60}
                   timeCaption="Time"
-                  dateFormat="h:mm aa"
+                  dateFormat="HH:mm"
+                  timeFormat="HH:mm"
                 />
               </label>
 

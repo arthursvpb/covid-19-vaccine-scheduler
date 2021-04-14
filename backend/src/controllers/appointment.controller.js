@@ -3,7 +3,9 @@ const Appointment = require('../models/appointment.model');
 const AppointmentController = {
   async index(_, res) {
     try {
-      const appointments = await Appointment.find();
+      const appointments = await Appointment.find().sort({
+        vaccinationTime: 'asc',
+      });
 
       return res.status(200).json(appointments);
     } catch ({ message }) {
