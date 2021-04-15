@@ -3,7 +3,20 @@ import React, { useEffect, useState } from 'react';
 
 import DatePicker from 'react-datepicker';
 
-import { Container, Paper, Typography, Checkbox } from '@material-ui/core';
+// import { makeStyles } from '@material-ui/core/styles';
+import {
+  Container,
+  // Paper,
+  Typography,
+  Checkbox,
+  Button,
+  TextField,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from '@material-ui/core';
 
 import { parse, differenceInCalendarYears, format } from 'date-fns';
 
@@ -13,6 +26,12 @@ export default function index() {
   const [appointments, setAppointments] = useState([]);
   const [filteredAppointments, setFilteredAppointments] = useState([]);
   const [dateFilter, setDateFilter] = useState(new Date());
+
+  const [open, setOpen] = useState(false);
+
+  const [conclusionInput, setConclusionInput] = useState('');
+
+  const [editAppointmentId, setEditAppointmentId] = useState();
 
   useEffect(() => {
     api
@@ -63,6 +82,43 @@ export default function index() {
     }
   };
 
+  const handleClickOpen = _id => {
+    setEditAppointmentId(_id);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleConclusionSubmit = async event => {
+    event.preventDefault();
+
+    const updatedAppointments = filteredAppointments.map(appointment => {
+      if (appointment._id === editAppointmentId) {
+        return {
+          ...appointment,
+          isConcluded: true,
+          conclusion: conclusionInput,
+        };
+      }
+
+      return appointment;
+    });
+
+    try {
+      await api.put(`/appointments/${editAppointmentId}`, {
+        isConcluded: true,
+        conclusion: conclusionInput,
+      });
+
+      setFilteredAppointments(updatedAppointments);
+      handleClose();
+    } catch (error) {
+      alert(error.response?.data.message || `😓 Something went wrong!`);
+    }
+  };
+
   return (
     <Container>
       <DatePicker
@@ -82,7 +138,8 @@ export default function index() {
           conclusion,
           isConcluded,
         }) => (
-          <Paper key={_id} style={{ marginBottom: '20px' }}>
+          <div key={_id} style={{ marginBottom: '20px' }}>
+            <Typography>{_id}</Typography>
             <Typography>{name}</Typography>
             <Typography>
               {differenceInCalendarYears(
@@ -98,7 +155,40 @@ export default function index() {
               checked={isConcluded}
               onChange={event => handleAppointmentChecked(event, _id)}
             />
-          </Paper>
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={() => handleClickOpen(_id)}
+            >
+              Concluir
+            </Button>
+            <Dialog
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="form-dialog-title"
+            >
+              <form onSubmit={event => handleConclusionSubmit(event)}>
+                <DialogTitle id="form-dialog-title">
+                  Concluir Atendimentos
+                </DialogTitle>
+                <DialogContent>
+                  <DialogContentText>Detalhes do atendimento</DialogContentText>
+                  <TextField
+                    onChange={event => setConclusionInput(event.target.value)}
+                    autoFocus
+                    margin="dense"
+                    id="name"
+                    label="Detalhes do atendimento"
+                    type="text"
+                    fullWidth
+                  />
+                </DialogContent>
+                <DialogActions>
+                  <button type="submit">Submit</button>
+                </DialogActions>
+              </form>
+            </Dialog>
+          </div>
         ),
       )}
     </Container>
