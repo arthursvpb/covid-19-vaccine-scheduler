@@ -96,74 +96,78 @@ export default function index() {
   };
 
   return (
-    <Container>
-      <DatePicker
-        name="dateFilter"
-        id="dateFilter"
-        selected={dateFilter}
-        dateFormat="dd-MM-yyyy"
-        onChange={handleDateFilterChange}
-      />
-      {filteredAppointments.map(
-        ({
-          _id,
-          name,
-          birthday,
-          vaccinationDate,
-          vaccinationTime,
-          conclusion,
-          isConcluded,
-        }) => (
-          <div key={_id} style={{ marginBottom: '20px' }}>
-            <Typography>{_id}</Typography>
-            <Typography>{name}</Typography>
-            <Typography>
-              {differenceInCalendarYears(
-                new Date(),
-                parse(birthday, 'dd-MM-yyyy', new Date()),
-              )}
-            </Typography>
-            <Typography>{vaccinationDate}</Typography>
-            <Typography>{vaccinationTime}</Typography>
-            <Typography>{conclusion}</Typography>
-            <Typography>{isConcluded ? 'Atendido' : 'Não atendido'}</Typography>
+    <>
+      <Container>
+        <DatePicker
+          name="dateFilter"
+          id="dateFilter"
+          selected={dateFilter}
+          dateFormat="dd-MM-yyyy"
+          onChange={handleDateFilterChange}
+        />
+        {filteredAppointments.map(
+          ({
+            _id,
+            name,
+            birthday,
+            vaccinationDate,
+            vaccinationTime,
+            conclusion,
+            isConcluded,
+          }) => (
+            <div key={_id} style={{ marginBottom: '20px' }}>
+              <Typography>{_id}</Typography>
+              <Typography>{name}</Typography>
+              <Typography>
+                {differenceInCalendarYears(
+                  new Date(),
+                  parse(birthday, 'dd-MM-yyyy', new Date()),
+                )}
+              </Typography>
+              <Typography>{vaccinationDate}</Typography>
+              <Typography>{vaccinationTime}</Typography>
+              <Typography>{conclusion}</Typography>
+              <Typography>
+                {isConcluded ? 'Atendido' : 'Não atendido'}
+              </Typography>
 
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={() => handleDialogOpen(_id)}
-            >
-              Concluir
-            </Button>
-            <Dialog
-              open={showDialog}
-              onClose={handleDialogClose}
-              aria-labelledby="form-dialog-title"
-            >
-              <form onSubmit={event => handleConclusionSubmit(event)}>
-                <DialogTitle id="form-dialog-title">
-                  Concluir Atendimentos
-                </DialogTitle>
-                <DialogContent>
-                  <DialogContentText>Detalhes do atendimento</DialogContentText>
-                  <TextField
-                    onChange={event => setConclusionInput(event.target.value)}
-                    autoFocus
-                    margin="dense"
-                    id="name"
-                    label="Detalhes do atendimento"
-                    type="text"
-                    fullWidth
-                  />
-                </DialogContent>
-                <DialogActions>
-                  <button type="submit">Submit</button>
-                </DialogActions>
-              </form>
-            </Dialog>
-          </div>
-        ),
-      )}
-    </Container>
+              <Button
+                variant="outlined"
+                color="primary"
+                onClick={() => handleDialogOpen(_id)}
+              >
+                Concluir
+              </Button>
+            </div>
+          ),
+        )}
+      </Container>
+      <Dialog
+        open={showDialog}
+        onClose={handleDialogClose}
+        aria-labelledby="form-dialog-title"
+      >
+        <form onSubmit={event => handleConclusionSubmit(event)}>
+          <DialogTitle id="form-dialog-title">
+            Concluir Atendimentos
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText>Detalhes do atendimento</DialogContentText>
+            <TextField
+              onChange={event => setConclusionInput(event.target.value)}
+              autoFocus
+              margin="dense"
+              id="name"
+              label="Detalhes do atendimento"
+              type="text"
+              fullWidth
+            />
+          </DialogContent>
+          <DialogActions>
+            <button type="submit">Submit</button>
+          </DialogActions>
+        </form>
+      </Dialog>
+    </>
   );
 }

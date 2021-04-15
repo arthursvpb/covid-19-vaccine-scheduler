@@ -1,14 +1,15 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
+import { useFormik } from 'formik';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import {
   Container,
   Grid,
   Paper,
-  Typography,
-  TextField,
+  // Typography,
+  // TextField,
   FormLabel,
 } from '@material-ui/core';
 // Layout, Drawer, List, ListItem, ListItemText, ListItemIcon
@@ -23,39 +24,41 @@ export default function CreateAppointment() {
   const [vaccinationDate, setVaccinationDate] = useState('');
   const [vaccinationTime, setVaccinationTime] = useState('');
 
-  const handleSubmit = async event => {
-    event.preventDefault();
-
-    const appointmentForm = {
+  const formik = useFormik({
+    initialValues: {
       name,
-      birthday: format(birthday, 'dd-MM-yyyy'),
-      vaccinationDate: format(vaccinationDate, 'dd-MM-yyyy'),
-      vaccinationTime: format(vaccinationTime, 'HH:mm'),
-    };
+      birthday,
+      vaccinationDate,
+      vaccinationTime,
+    },
+    onSubmit: async () => {
+      const appointmentForm = {
+        name,
+        birthday: format(birthday, 'dd-MM-yyyy'),
+        vaccinationDate: format(vaccinationDate, 'dd-MM-yyyy'),
+        vaccinationTime: format(vaccinationTime, 'HH:mm'),
+      };
+      alert(JSON.stringify(appointmentForm));
 
-    try {
-      const response = await api.post('/appointments', appointmentForm);
-      alert(response.data.message);
-    } catch (error) {
-      alert(error.response?.data.message || `😓 Something went wrong!`);
-    }
-  };
+      try {
+        const response = await api.post('/appointments', appointmentForm);
+        alert(response.data.message);
+      } catch (error) {
+        alert(error.response?.data.message || `😓 Something went wrong!`);
+      }
+    },
+  });
 
   return (
     <Container>
       <Grid container>
         <Grid item xs={12}>
           <Paper>
-            <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-              <Typography variant="h3">Create new appointment</Typography>
+            <form
+              autoComplete="off"
+              onSubmit={event => formik.handleSubmit(event)}
+            >
               <FormLabel button> Nome</FormLabel>
-              <TextField
-                label="Your name"
-                variant="outlined"
-                multiline
-                rows={4}
-                required
-              />
               <legend>New appointment</legend>
               <label htmlFor="name">
                 Name
