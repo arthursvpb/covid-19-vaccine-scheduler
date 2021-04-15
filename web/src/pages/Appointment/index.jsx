@@ -154,6 +154,7 @@ export default function index() {
           <DialogContent>
             <DialogContentText>Detalhes do atendimento</DialogContentText>
             <TextField
+              multiline
               onChange={event => setConclusionInput(event.target.value)}
               autoFocus
               margin="dense"
