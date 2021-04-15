@@ -8,7 +8,6 @@ import {
   Container,
   // Paper,
   Typography,
-  Checkbox,
   Button,
   TextField,
   Dialog,
@@ -27,8 +26,7 @@ export default function index() {
   const [filteredAppointments, setFilteredAppointments] = useState([]);
   const [dateFilter, setDateFilter] = useState(new Date());
 
-  const [open, setOpen] = useState(false);
-
+  const [showDialog, setShowDialog] = useState(false);
   const [conclusionInput, setConclusionInput] = useState('');
 
   const [editAppointmentId, setEditAppointmentId] = useState();
@@ -59,36 +57,13 @@ export default function index() {
     setDateFilter(date);
   };
 
-  const handleAppointmentChecked = async (event, _id) => {
-    const { checked } = event.target;
-
-    const updatedAppointments = filteredAppointments.map(appointment => {
-      if (appointment._id === _id) {
-        return {
-          ...appointment,
-          isConcluded: checked,
-        };
-      }
-
-      return appointment;
-    });
-
-    try {
-      await api.put(`/appointments/${_id}`, { isConcluded: checked });
-
-      setFilteredAppointments(updatedAppointments);
-    } catch (error) {
-      alert(error.response?.data.message || `😓 Something went wrong!`);
-    }
-  };
-
-  const handleClickOpen = _id => {
+  const handleDialogOpen = _id => {
     setEditAppointmentId(_id);
-    setOpen(true);
+    setShowDialog(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleDialogClose = () => {
+    setShowDialog(false);
   };
 
   const handleConclusionSubmit = async event => {
@@ -113,7 +88,8 @@ export default function index() {
       });
 
       setFilteredAppointments(updatedAppointments);
-      handleClose();
+      handleDialogClose();
+      alert(`✅ Success!`);
     } catch (error) {
       alert(error.response?.data.message || `😓 Something went wrong!`);
     }
@@ -151,20 +127,17 @@ export default function index() {
             <Typography>{vaccinationTime}</Typography>
             <Typography>{conclusion}</Typography>
             <Typography>{isConcluded ? 'Atendido' : 'Não atendido'}</Typography>
-            <Checkbox
-              checked={isConcluded}
-              onChange={event => handleAppointmentChecked(event, _id)}
-            />
+
             <Button
               variant="outlined"
               color="primary"
-              onClick={() => handleClickOpen(_id)}
+              onClick={() => handleDialogOpen(_id)}
             >
               Concluir
             </Button>
             <Dialog
-              open={open}
-              onClose={handleClose}
+              open={showDialog}
+              onClose={handleDialogClose}
               aria-labelledby="form-dialog-title"
             >
               <form onSubmit={event => handleConclusionSubmit(event)}>
