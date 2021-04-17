@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Grid, Typography } from '@material-ui/core';
-import Image from 'material-ui-image';
-import undrawDoctors from '../../assets/undraw_doctors.png';
+// import Image from 'material-ui-image';
+// import undrawDoctors from '../../assets/undraw_doctors.png';
 import Page from '../../components/Page';
 import Button from '../../components/Button';
 
@@ -16,7 +16,7 @@ export default function index() {
     <Page>
       <Grid container className={classes.grid}>
         <Grid item xs={12} md={7} className={classes.gridItem}>
-          <Image imageStyle={{ objectFit: 'contain' }} src={undrawDoctors} />
+          {/* <Image imageStyle={{ objectFit: 'contain' }} src={undrawDoctors} /> */}
         </Grid>
         <Grid item xs={12} md={5} className={classes.gridItem}>
           <Typography variant="h6">

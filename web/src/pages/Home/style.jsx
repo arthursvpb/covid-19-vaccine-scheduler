@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
   grid: {
     alignItems: 'center',
-    height: '100vh',
   },
   gridItem: {},
   buttons: {
