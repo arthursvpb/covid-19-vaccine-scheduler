@@ -1,15 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Page from '../../components/Page';
+import Button from '../../components/Button';
+// import useStyles from './style';
+
 export default function index() {
+  // const classes = useStyles();
+
   return (
-    <div>
-      <Link as={Link} to="/agendamentos/novo">
-        <button type="button">Novo agendamento</button>
-      </Link>
-      <Link as={Link} to="/agendamentos/">
-        <button type="button">Agendamentos</button>
-      </Link>
-    </div>
+    <Page>
+      <Button to="/agendamentos/novo" component={Link}>
+        Novo agendamento
+      </Button>
+      <Button to="/agendamentos" component={Link}>
+        Agendamento
+      </Button>
+    </Page>
   );
 }
