@@ -27,6 +27,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "engines": {
+    "npm": "You must run Yarn in this project."
+  },
   "eslintConfig": {
     "extends": [
       "react-app",

@@ -16,7 +16,7 @@ export default function index() {
     <Page>
       <Grid container className={classes.grid}>
         <Grid item xs={12} md={7} className={classes.gridItem}>
-          <Image src={undrawDoctors} />
+          <Image imageStyle={{ objectFit: 'contain' }} src={undrawDoctors} />
         </Grid>
         <Grid item xs={12} md={5} className={classes.gridItem}>
           <Typography variant="h6">
