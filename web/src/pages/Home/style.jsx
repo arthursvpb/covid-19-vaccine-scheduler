@@ -1,7 +1,21 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
-  root: {},
+  grid: {
+    alignItems: 'center',
+    height: '100vh',
+  },
+  gridItem: {},
+  buttons: {
+    marginTop: '30px',
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  button: {
+    padding: '10px',
+    margin: '10px',
+    width: '100%',
+  },
 });
 
 export default useStyles;
