@@ -10,6 +10,7 @@ import {
   Paper,
   // Typography,
   TextField,
+  Typography,
 } from '@material-ui/core';
 // Layout, Drawer, List, ListItem, ListItemText, ListItemIcon, Lotties
 
@@ -19,6 +20,8 @@ import Page from '../../../components/Page';
 import Button from '../../../components/Button';
 
 import api from '../../../services/api';
+
+import useStyles from './style';
 
 export default function index() {
   const [name, setName] = useState('');
@@ -69,15 +72,17 @@ export default function index() {
     },
   });
 
+  const classes = useStyles();
+
   return (
     <Page>
-      <Paper
-        elevation={3}
-        style={{ padding: '50px', width: '60vw', height: '50vh' }}
-      >
+      <Paper elevation={3} className={classes.paper}>
         <form autoComplete="off" onSubmit={event => formik.handleSubmit(event)}>
-          <Grid container direction="row" justify="center" alignItems="center">
-            <Grid item xs={6}>
+          <Grid container className={classes.grid}>
+            <Grid item xs={12}>
+              <Typography variant="h5">Dados pessoais</Typography>
+            </Grid>
+            <Grid item xs={12} md={6}>
               <TextField
                 id="name"
                 name="name"
@@ -118,7 +123,11 @@ export default function index() {
               />
             </Grid>
 
-            <Grid item xs={6}>
+            <Grid item xs={12} style={{ marginTop: '40px' }}>
+              <Typography variant="h5">Data e hora da vacinação</Typography>
+            </Grid>
+
+            <Grid item xs={12} md={6}>
               <DatePicker
                 customInput={
                   <TextField
@@ -145,7 +154,7 @@ export default function index() {
               />
             </Grid>
 
-            <Grid item xs={6}>
+            <Grid item xs={12} md={6}>
               <DatePicker
                 customInput={
                   <TextField
@@ -177,7 +186,7 @@ export default function index() {
               />
             </Grid>
 
-            <Button type="submit">Submit</Button>
+            <Button type="submit">Enviar</Button>
           </Grid>
         </form>
       </Paper>
