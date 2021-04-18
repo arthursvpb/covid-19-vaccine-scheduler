@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
-import Appointment from './pages/Appointment';
-import CreateAppointment from './pages/Appointment/createAppointment';
+import Appointment from './pages/Appointment/Appointments';
+import AppointmentForm from './pages/Appointment/AppointmentForm';
 
 const routes = [
   {
@@ -17,7 +17,7 @@ const routes = [
     name: 'Agendamentos',
   },
   {
-    component: CreateAppointment,
+    component: AppointmentForm,
     path: '/agendamentos/novo',
     name: 'Novo Agendamento',
   },

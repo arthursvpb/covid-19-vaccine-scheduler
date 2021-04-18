@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Grid, Typography } from '@material-ui/core';
-// import Image from 'material-ui-image';
-// import undrawDoctors from '../../assets/undraw_doctors.png';
+import Image from 'material-ui-image';
+import EventIcon from '@material-ui/icons/Event';
+import AddAlarmIcon from '@material-ui/icons/AddAlarm';
+import undrawDoctors from '../../assets/undraw_doctors.png';
 import Page from '../../components/Page';
 import Button from '../../components/Button';
 
@@ -16,7 +18,7 @@ export default function index() {
     <Page>
       <Grid container className={classes.grid}>
         <Grid item xs={12} md={7} className={classes.gridItem}>
-          {/* <Image imageStyle={{ objectFit: 'contain' }} src={undrawDoctors} /> */}
+          <Image imageStyle={{ objectFit: 'contain' }} src={undrawDoctors} />
         </Grid>
         <Grid item xs={12} md={5} className={classes.gridItem}>
           <Typography variant="h6">
@@ -27,6 +29,7 @@ export default function index() {
           </Typography>
           <Grid item className={classes.buttons}>
             <Button
+              startIcon={<AddAlarmIcon />}
               to="/agendamentos/novo"
               component={Link}
               className={classes.button}
@@ -34,6 +37,7 @@ export default function index() {
               Novo agendamento
             </Button>
             <Button
+              startIcon={<EventIcon />}
               to="/agendamentos"
               component={Link}
               className={classes.button}

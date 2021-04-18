@@ -2,6 +2,10 @@ import React from 'react';
 
 import { Container } from '@material-ui/core';
 
+import useStyles from './style';
+
 export default function index({ children }) {
-  return <Container>{children}</Container>;
+  const classes = useStyles();
+
+  return <Container className={classes.root}>{children}</Container>;
 }

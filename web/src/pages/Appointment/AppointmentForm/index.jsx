@@ -6,7 +6,6 @@ import * as yup from 'yup';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import {
-  Container,
   Grid,
   Paper,
   // Typography,
@@ -16,25 +15,32 @@ import {
 
 import { format } from 'date-fns';
 
-import api from '../../services/api';
+import Page from '../../../components/Page';
+import Button from '../../../components/Button';
 
-export default function CreateAppointment() {
+import api from '../../../services/api';
+
+export default function index() {
   const [name, setName] = useState('');
   const [birthday, setBirthday] = useState('');
   const [vaccinationDate, setVaccinationDate] = useState('');
   const [vaccinationTime, setVaccinationTime] = useState('');
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required('Por favor, digite seu nome.'),
+    name: yup
+      .string()
+      .required('Seu nome completo é um campo de preenchimento obrigatório.'),
     birthday: yup
       .string()
-      .required('Por favor, digite sua data de nascimento.'),
+      .required(
+        'Sua data de nascimento é um campo de preenchimento obrigatório.',
+      ),
     vaccinationDate: yup
       .string()
-      .required('Por favor, digite a data da vacina.'),
+      .required('O dia da vacina é um campo de preenchimento obrigatório.'),
     vaccinationTime: yup
       .string()
-      .required('Por favor, digite o horário da sua vacina.'),
+      .required('A hora da vacina é um campo de preenchimento obrigatório.'),
   });
 
   const formik = useFormik({
@@ -64,19 +70,19 @@ export default function CreateAppointment() {
   });
 
   return (
-    <Container>
-      <Grid container>
-        <Grid item xs={12}>
-          <Paper>
-            <form
-              autoComplete="off"
-              onSubmit={event => formik.handleSubmit(event)}
-            >
+    <Page>
+      <Paper
+        elevation={3}
+        style={{ padding: '50px', width: '60vw', height: '50vh' }}
+      >
+        <form autoComplete="off" onSubmit={event => formik.handleSubmit(event)}>
+          <Grid container direction="row" justify="center" alignItems="center">
+            <Grid item xs={6}>
               <TextField
                 id="name"
                 name="name"
                 type="text"
-                label="name"
+                label="Nome completo"
                 value={name}
                 onChange={event => {
                   setName(event.target.value);
@@ -85,13 +91,15 @@ export default function CreateAppointment() {
                 error={formik.touched.name && Boolean(formik.errors.name)}
                 helperText={formik.touched.name && formik.errors.name}
               />
+            </Grid>
 
+            <Grid item xs={6}>
               <DatePicker
                 customInput={
                   <TextField
                     id="birthday"
                     name="birthday"
-                    label="birthday"
+                    label="Data de nascimento"
                     value={birthday}
                     error={
                       formik.touched.birthday && Boolean(formik.errors.birthday)
@@ -108,13 +116,15 @@ export default function CreateAppointment() {
                 selected={birthday}
                 dateFormat="dd/MM/yyyy"
               />
+            </Grid>
 
+            <Grid item xs={6}>
               <DatePicker
                 customInput={
                   <TextField
                     id="vaccinationDate"
                     name="vaccinationDate"
-                    label="vaccinationDate"
+                    label="Data da vacina"
                     value={vaccinationDate}
                     error={
                       formik.touched.vaccinationDate &&
@@ -133,13 +143,15 @@ export default function CreateAppointment() {
                 selected={vaccinationDate}
                 dateFormat="dd/MM/yyyy"
               />
+            </Grid>
 
+            <Grid item xs={6}>
               <DatePicker
                 customInput={
                   <TextField
                     id="vaccinationTime"
                     name="vaccinationTime"
-                    label="vaccinationTime"
+                    label="Horário da vacina"
                     value={vaccinationTime}
                     error={
                       formik.touched.vaccinationTime &&
@@ -163,12 +175,12 @@ export default function CreateAppointment() {
                 dateFormat="HH:mm"
                 timeFormat="HH:mm"
               />
+            </Grid>
 
-              <button type="submit">Submit</button>
-            </form>
-          </Paper>
-        </Grid>
-      </Grid>
-    </Container>
+            <Button type="submit">Submit</Button>
+          </Grid>
+        </form>
+      </Paper>
+    </Page>
   );
 }

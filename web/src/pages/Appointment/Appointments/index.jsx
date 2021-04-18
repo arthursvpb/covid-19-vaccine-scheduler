@@ -19,7 +19,9 @@ import {
 
 import { parse, differenceInCalendarYears, format } from 'date-fns';
 
-import api from '../../services/api';
+import Page from '../../../components/Page';
+
+import api from '../../../services/api';
 
 export default function index() {
   const [appointments, setAppointments] = useState([]);
@@ -96,7 +98,7 @@ export default function index() {
   };
 
   return (
-    <>
+    <Page>
       <Container>
         <DatePicker
           name="dateFilter"
@@ -169,6 +171,6 @@ export default function index() {
           </DialogActions>
         </form>
       </Dialog>
-    </>
+    </Page>
   );
 }
