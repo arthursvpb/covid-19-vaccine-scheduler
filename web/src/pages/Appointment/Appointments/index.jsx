@@ -5,9 +5,8 @@ import DatePicker from 'react-datepicker';
 
 // import { makeStyles } from '@material-ui/core/styles';
 import {
-  Container,
-  // Paper,
-  Typography,
+  Paper,
+  // Typography,
   Button,
   TextField,
   Dialog,
@@ -15,11 +14,18 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
 } from '@material-ui/core';
 
 import { parse, differenceInCalendarYears, format } from 'date-fns';
 
 import Page from '../../../components/Page';
+// import Drawer from '../../../components/Drawer';
 
 import api from '../../../services/api';
 
@@ -98,52 +104,71 @@ export default function index() {
   };
 
   return (
-    <Page>
-      <Container>
-        <DatePicker
-          name="dateFilter"
-          id="dateFilter"
-          selected={dateFilter}
-          dateFormat="dd-MM-yyyy"
-          onChange={handleDateFilterChange}
-        />
-        {filteredAppointments.map(
-          ({
-            _id,
-            name,
-            birthday,
-            vaccinationDate,
-            vaccinationTime,
-            conclusion,
-            isConcluded,
-          }) => (
-            <div key={_id} style={{ marginBottom: '20px' }}>
-              <Typography>{_id}</Typography>
-              <Typography>{name}</Typography>
-              <Typography>
-                {differenceInCalendarYears(
-                  new Date(),
-                  parse(birthday, 'dd-MM-yyyy', new Date()),
-                )}
-              </Typography>
-              <Typography>{vaccinationDate}</Typography>
-              <Typography>{vaccinationTime}</Typography>
-              <Typography>{conclusion}</Typography>
-              <Typography>
-                {isConcluded ? 'Atendido' : 'Não atendido'}
-              </Typography>
-
-              <Button
-                variant="outlined"
-                color="primary"
-                onClick={() => handleDialogOpen(_id)}
-              >
-                Concluir
-              </Button>
-            </div>
-          ),
-        )}
-      </Container>
+    <Page style={{ flexDirection: 'column' }}>
+      <DatePicker
+        customInput={
+          <TextField
+            inputProps={{
+              style: { textAlign: 'center', fontSize: '20px' },
+            }}
+          />
+        }
+        name="dateFilter"
+        id="dateFilter"
+        selected={dateFilter}
+        dateFormat="dd-MM-yyyy"
+        onChange={handleDateFilterChange}
+      />
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell align="center">Nome</TableCell>
+              <TableCell align="center">Idade</TableCell>
+              <TableCell align="center">Horário</TableCell>
+              <TableCell align="center">Status</TableCell>
+              <TableCell align="center">Conclusão</TableCell>
+              <TableCell align="center">Ações</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {filteredAppointments.map(
+              ({
+                _id,
+                name,
+                birthday,
+                vaccinationTime,
+                conclusion,
+                isConcluded,
+              }) => (
+                <TableRow key={_id}>
+                  <TableCell align="center">{name}</TableCell>
+                  <TableCell align="center">
+                    {differenceInCalendarYears(
+                      new Date(),
+                      parse(birthday, 'dd-MM-yyyy', new Date()),
+                    )}
+                  </TableCell>
+                  <TableCell align="center">{vaccinationTime}</TableCell>
+                  <TableCell align="center">
+                    {isConcluded ? 'Atendido' : 'Não atendido'}
+                  </TableCell>
+                  <TableCell align="center">{conclusion || '-'}</TableCell>
+                  <TableCell align="center">
+                    <Button
+                      variant="outlined"
+                      color="primary"
+                      onClick={() => handleDialogOpen(_id)}
+                    >
+                      Concluir
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ),
+            )}
+          </TableBody>
+        </Table>
+      </TableContainer>
       <Dialog
         open={showDialog}
         onClose={handleDialogClose}
