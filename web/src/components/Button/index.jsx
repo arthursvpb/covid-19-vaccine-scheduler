@@ -8,7 +8,7 @@ export default function index({ children, ...otherProps }) {
   const classes = useStyles();
 
   return (
-    <Button variant="outlined" className={classes.root} {...otherProps}>
+    <Button className={classes.root} {...otherProps}>
       <Typography>{children}</Typography>
     </Button>
   );

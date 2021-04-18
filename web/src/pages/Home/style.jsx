@@ -9,11 +9,11 @@ const useStyles = makeStyles({
     marginTop: '30px',
     display: 'flex',
     justifyContent: 'center',
-  },
-  button: {
-    padding: '10px',
-    margin: '10px',
-    width: '100%',
+    '& > *': {
+      padding: '10px',
+      margin: '10px',
+      width: '100%',
+    },
   },
 });
 

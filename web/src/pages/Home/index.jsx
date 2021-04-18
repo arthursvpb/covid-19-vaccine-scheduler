@@ -7,7 +7,7 @@ import EventIcon from '@material-ui/icons/Event';
 import AddAlarmIcon from '@material-ui/icons/AddAlarm';
 
 import Image from 'material-ui-image';
-import undrawDoctors from '../../assets/undraw_doctors.png';
+import undrawDoctors from '../../assets/undraw_doctors.svg';
 
 import Page from '../../components/Page';
 import Button from '../../components/Button';
@@ -27,15 +27,13 @@ export default function index() {
           <Typography variant="h6">
             O plano de vacinação contra a Covid-19 está dividido por grupos de
             prioridade, de acordo com o tempo de exposição e pessoas com maior
-            risco de desenvolver complicações e óbito pela doença. Cadastre-se e
-            receba a notificação quando iniciar a vacinação para o seu grupo.
+            risco de desenvolver complicações e óbito pela doença.
           </Typography>
           <Grid item className={classes.buttons}>
             <Button
               startIcon={<AddAlarmIcon />}
               to="/agendamentos/novo"
               component={Link}
-              className={classes.button}
             >
               Novo agendamento
             </Button>
@@ -43,7 +41,6 @@ export default function index() {
               startIcon={<EventIcon />}
               to="/agendamentos"
               component={Link}
-              className={classes.button}
             >
               Agendamentos
             </Button>

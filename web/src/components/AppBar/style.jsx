@@ -8,6 +8,8 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(2),
   },
   appBar: {
+    backgroundColor: '#c4ffe4',
+    color: '#33634d',
     zIndex: 9999,
   },
 }));
