@@ -81,11 +81,13 @@ export default function index() {
       <Paper elevation={3} className={classes.paper}>
         <form autoComplete="off" onSubmit={event => formik.handleSubmit(event)}>
           <Grid container className={classes.grid}>
-            <Grid item xs={12}>
+            <Grid item xs={12} className={classes.title}>
               <Typography variant="h5">Dados pessoais</Typography>
             </Grid>
+
             <Grid item xs={12} md={6}>
               <TextField
+                variant="outlined"
                 id="name"
                 name="name"
                 type="text"
@@ -100,10 +102,11 @@ export default function index() {
               />
             </Grid>
 
-            <Grid item xs={6}>
+            <Grid item xs={12} md={6}>
               <DatePicker
                 customInput={
                   <TextField
+                    variant="outlined"
                     id="birthday"
                     name="birthday"
                     label="Data de nascimento"
@@ -125,7 +128,9 @@ export default function index() {
               />
             </Grid>
 
-            <Grid item xs={12} style={{ marginTop: '40px' }}>
+            <hr />
+
+            <Grid item xs={12} className={classes.title}>
               <Typography variant="h5">Data e hora da vacinação</Typography>
             </Grid>
 
@@ -133,6 +138,7 @@ export default function index() {
               <DatePicker
                 customInput={
                   <TextField
+                    variant="outlined"
                     id="vaccinationDate"
                     name="vaccinationDate"
                     label="Data da vacina"
@@ -160,6 +166,7 @@ export default function index() {
               <DatePicker
                 customInput={
                   <TextField
+                    variant="outlined"
                     id="vaccinationTime"
                     name="vaccinationTime"
                     label="Horário da vacina"
