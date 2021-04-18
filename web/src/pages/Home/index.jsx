@@ -2,10 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Grid, Typography } from '@material-ui/core';
-import Image from 'material-ui-image';
+
 import EventIcon from '@material-ui/icons/Event';
 import AddAlarmIcon from '@material-ui/icons/AddAlarm';
+
+import Image from 'material-ui-image';
 import undrawDoctors from '../../assets/undraw_doctors.png';
+
 import Page from '../../components/Page';
 import Button from '../../components/Button';
 

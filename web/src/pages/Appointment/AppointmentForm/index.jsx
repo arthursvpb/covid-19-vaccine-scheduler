@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
+
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+
+import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import { Grid, Paper, TextField, Typography } from '@material-ui/core';
@@ -17,6 +19,8 @@ import api from '../../../services/api';
 import useStyles from './style';
 
 export default function index() {
+  const classes = useStyles();
+
   const [name, setName] = useState('');
   const [birthday, setBirthday] = useState('');
   const [vaccinationDate, setVaccinationDate] = useState('');
@@ -64,8 +68,6 @@ export default function index() {
       }
     },
   });
-
-  const classes = useStyles();
 
   return (
     <Page>

@@ -27,9 +27,9 @@ import { parse, differenceInCalendarYears, format } from 'date-fns';
 
 import Page from '../../../components/Page';
 
-import useStyle from './style';
-
 import api from '../../../services/api';
+
+import useStyle from './style';
 
 export default function index() {
   const [appointments, setAppointments] = useState([]);
