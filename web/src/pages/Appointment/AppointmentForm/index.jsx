@@ -18,6 +18,7 @@ import { format } from 'date-fns';
 
 import Page from '../../../components/Page';
 import Button from '../../../components/Button';
+import Drawer from '../../../components/Drawer';
 
 import api from '../../../services/api';
 
@@ -76,6 +77,7 @@ export default function index() {
 
   return (
     <Page>
+      <Drawer />
       <Paper elevation={3} className={classes.paper}>
         <form autoComplete="off" onSubmit={event => formik.handleSubmit(event)}>
           <Grid container className={classes.grid}>

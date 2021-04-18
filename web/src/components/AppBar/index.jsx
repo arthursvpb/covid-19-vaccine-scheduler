@@ -11,6 +11,9 @@ const useStyles = makeStyles(theme => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
+  appBar: {
+    zIndex: 9999,
+  },
 }));
 
 export default function index() {
@@ -18,8 +21,8 @@ export default function index() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="absolute">
-        <Toolbar variant="dense">
+      <AppBar className={classes.appBar} position="fixed">
+        <Toolbar variant="regular">
           <Typography variant="h6" color="inherit">
             Agendamento Vacina COVID-19
           </Typography>
