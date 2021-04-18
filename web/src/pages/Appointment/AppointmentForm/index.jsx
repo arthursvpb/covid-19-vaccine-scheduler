@@ -8,6 +8,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import { Grid, Paper, TextField, Typography } from '@material-ui/core';
+import Send from '@material-ui/icons/Send';
 
 import { format } from 'date-fns';
 
@@ -73,13 +74,23 @@ export default function index() {
     <Page>
       <Paper elevation={3} className={classes.paper}>
         <form autoComplete="off" onSubmit={event => formik.handleSubmit(event)}>
+          <Grid item xs={12} className={classes.title}>
+            <Typography align="center" variant="h4">
+              Agendamento Vacina COVID-19
+            </Typography>
+          </Grid>
+
+          <div className={classes.divider} />
+
           <Grid container className={classes.grid}>
             <Grid item xs={12} className={classes.title}>
               <Typography variant="h5">Dados pessoais</Typography>
             </Grid>
 
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={8}>
               <TextField
+                className={classes.name}
+                fullWidth
                 variant="outlined"
                 id="name"
                 name="name"
@@ -95,7 +106,7 @@ export default function index() {
               />
             </Grid>
 
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={4} className={classes.birthday}>
               <DatePicker
                 customInput={
                   <TextField
@@ -121,13 +132,13 @@ export default function index() {
               />
             </Grid>
 
-            <hr />
+            <div className={classes.divider} />
 
             <Grid item xs={12} className={classes.title}>
               <Typography variant="h5">Data e hora da vacinação</Typography>
             </Grid>
 
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={4}>
               <DatePicker
                 customInput={
                   <TextField
@@ -155,7 +166,7 @@ export default function index() {
               />
             </Grid>
 
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={4}>
               <DatePicker
                 customInput={
                   <TextField
@@ -188,7 +199,11 @@ export default function index() {
               />
             </Grid>
 
-            <Button type="submit">Enviar</Button>
+            <Grid item xs={12} md={4} className={classes.button}>
+              <Button startIcon={<Send />} type="submit">
+                Enviar
+              </Button>
+            </Grid>
           </Grid>
         </form>
       </Paper>

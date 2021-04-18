@@ -4,19 +4,31 @@ const useStyles = makeStyles({
   paper: {
     display: 'flex',
     padding: '70px',
-    maxWidth: '700px',
+    maxWidth: '650px',
   },
   grid: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'flex-end',
     '& > *': {
       display: 'flex',
-      justifyContent: 'center',
+      justifyContent: 'flex-start',
     },
   },
   title: {
+    justifyContent: 'flex-start',
     marginBottom: '20px',
+  },
+  name: {
+    paddingRight: '40px',
+  },
+  birthday: {
+    justifyContent: 'flex-end',
+  },
+  divider: {
+    margin: '30px',
+  },
+  button: {
+    justifyContent: 'flex-end',
   },
 });
 
