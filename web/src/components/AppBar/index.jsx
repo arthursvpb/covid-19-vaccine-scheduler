@@ -2,7 +2,9 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -16,16 +18,18 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function index() {
+export default function index({ routes }) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <AppBar className={classes.appBar} position="fixed">
         <Toolbar variant="regular">
-          <Typography variant="h6" color="inherit">
-            Agendamento Vacina COVID-19
-          </Typography>
+          {routes.map(route => (
+            <Button color="inherit" component={Link} to={route.path}>
+              {route.name}
+            </Button>
+          ))}
         </Toolbar>
       </AppBar>
     </div>

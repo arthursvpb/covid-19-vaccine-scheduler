@@ -20,12 +20,14 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Grid,
 } from '@material-ui/core';
 
 import { parse, differenceInCalendarYears, format } from 'date-fns';
 
 import Page from '../../../components/Page';
-// import Drawer from '../../../components/Drawer';
+
+import useStyle from './style';
 
 import api from '../../../services/api';
 
@@ -103,72 +105,86 @@ export default function index() {
     }
   };
 
+  const classes = useStyle();
+
   return (
-    <Page style={{ flexDirection: 'column' }}>
-      <DatePicker
-        customInput={
-          <TextField
-            inputProps={{
-              style: { textAlign: 'center', fontSize: '20px' },
-            }}
+    <Page
+      style={{
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+      }}
+    >
+      <Grid container className={classes.grid}>
+        <Grid item xs={12} className={classes.title}>
+          <DatePicker
+            customInput={
+              <TextField
+                variant="outlined"
+                inputProps={{
+                  style: { textAlign: 'center', fontSize: '20px' },
+                }}
+              />
+            }
+            name="dateFilter"
+            id="dateFilter"
+            selected={dateFilter}
+            dateFormat="dd-MM-yyyy"
+            onChange={handleDateFilterChange}
           />
-        }
-        name="dateFilter"
-        id="dateFilter"
-        selected={dateFilter}
-        dateFormat="dd-MM-yyyy"
-        onChange={handleDateFilterChange}
-      />
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell align="center">Nome</TableCell>
-              <TableCell align="center">Idade</TableCell>
-              <TableCell align="center">Horário</TableCell>
-              <TableCell align="center">Status</TableCell>
-              <TableCell align="center">Conclusão</TableCell>
-              <TableCell align="center">Ações</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {filteredAppointments.map(
-              ({
-                _id,
-                name,
-                birthday,
-                vaccinationTime,
-                conclusion,
-                isConcluded,
-              }) => (
-                <TableRow key={_id}>
-                  <TableCell align="center">{name}</TableCell>
-                  <TableCell align="center">
-                    {differenceInCalendarYears(
-                      new Date(),
-                      parse(birthday, 'dd-MM-yyyy', new Date()),
-                    )}
-                  </TableCell>
-                  <TableCell align="center">{vaccinationTime}</TableCell>
-                  <TableCell align="center">
-                    {isConcluded ? 'Atendido' : 'Não atendido'}
-                  </TableCell>
-                  <TableCell align="center">{conclusion || '-'}</TableCell>
-                  <TableCell align="center">
-                    <Button
-                      variant="outlined"
-                      color="primary"
-                      onClick={() => handleDialogOpen(_id)}
-                    >
-                      Concluir
-                    </Button>
-                  </TableCell>
+        </Grid>
+        <Grid item xs={12}>
+          <TableContainer component={Paper}>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell align="center">Nome</TableCell>
+                  <TableCell align="center">Idade</TableCell>
+                  <TableCell align="center">Horário</TableCell>
+                  <TableCell align="center">Status</TableCell>
+                  <TableCell align="center">Conclusão</TableCell>
+                  <TableCell align="center">Ações</TableCell>
                 </TableRow>
-              ),
-            )}
-          </TableBody>
-        </Table>
-      </TableContainer>
+              </TableHead>
+              <TableBody>
+                {filteredAppointments.map(
+                  ({
+                    _id,
+                    name,
+                    birthday,
+                    vaccinationTime,
+                    conclusion,
+                    isConcluded,
+                  }) => (
+                    <TableRow key={_id}>
+                      <TableCell align="center">{name}</TableCell>
+                      <TableCell align="center">
+                        {differenceInCalendarYears(
+                          new Date(),
+                          parse(birthday, 'dd-MM-yyyy', new Date()),
+                        )}
+                      </TableCell>
+                      <TableCell align="center">{vaccinationTime}</TableCell>
+                      <TableCell align="center">
+                        {isConcluded ? 'Atendido' : 'Não atendido'}
+                      </TableCell>
+                      <TableCell align="center">{conclusion || '-'}</TableCell>
+                      <TableCell align="center">
+                        <Button
+                          variant="outlined"
+                          color="primary"
+                          onClick={() => handleDialogOpen(_id)}
+                        >
+                          Concluir
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  ),
+                )}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Grid>
+      </Grid>
       <Dialog
         open={showDialog}
         onClose={handleDialogClose}
