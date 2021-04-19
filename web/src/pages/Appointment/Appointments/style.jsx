@@ -19,6 +19,20 @@ const useStyles = makeStyles({
     marginBottom: '20px',
     marginTop: '100px',
   },
+  concluded: {
+    color: '#43703f',
+    borderRadius: '4px',
+    textAlign: 'center',
+    padding: '5px',
+    backgroundColor: '#bfffb9',
+  },
+  notConcluded: {
+    color: '#34646d',
+    borderRadius: '4px',
+    textAlign: 'center',
+    padding: '5px',
+    backgroundColor: '#c1f6ff',
+  },
 });
 
 export default useStyles;

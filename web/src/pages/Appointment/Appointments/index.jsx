@@ -8,7 +8,6 @@ import EventIcon from '@material-ui/icons/Event';
 // import { makeStyles } from '@material-ui/core/styles';
 import {
   Paper,
-  Button,
   TextField,
   InputAdornment,
   Dialog,
@@ -23,11 +22,16 @@ import {
   TableHead,
   TableRow,
   Grid,
+  Typography,
 } from '@material-ui/core';
 
 import { parse, differenceInCalendarYears, format } from 'date-fns';
 
+import Image from 'material-ui-image';
+import undrawNoData from '../../../assets/undraw_no_data.svg';
+
 import Page from '../../../components/Page';
+import Button from '../../../components/Button';
 
 import api from '../../../services/api';
 
@@ -144,56 +148,74 @@ export default function index() {
           />
         </Grid>
         <Grid item xs={12}>
-          <TableContainer component={Paper}>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell align="center">Nome</TableCell>
-                  <TableCell align="center">Idade</TableCell>
-                  <TableCell align="center">Horário</TableCell>
-                  <TableCell align="center">Status</TableCell>
-                  <TableCell align="center">Conclusão</TableCell>
-                  <TableCell align="center">Ações</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {filteredAppointments.map(
-                  ({
-                    _id,
-                    name,
-                    birthday,
-                    vaccinationTime,
-                    conclusion,
-                    isConcluded,
-                  }) => (
-                    <TableRow key={_id}>
-                      <TableCell align="center">{name}</TableCell>
-                      <TableCell align="center">
-                        {differenceInCalendarYears(
-                          new Date(),
-                          parse(birthday, 'dd-MM-yyyy', new Date()),
-                        )}
-                      </TableCell>
-                      <TableCell align="center">{vaccinationTime}</TableCell>
-                      <TableCell align="center">
-                        {isConcluded ? 'Atendido' : 'Não atendido'}
-                      </TableCell>
-                      <TableCell align="center">{conclusion || '-'}</TableCell>
-                      <TableCell align="center">
-                        <Button
-                          variant="outlined"
-                          color="primary"
-                          onClick={() => handleDialogOpen(_id)}
-                        >
-                          Concluir
-                        </Button>
-                      </TableCell>
-                    </TableRow>
-                  ),
-                )}
-              </TableBody>
-            </Table>
-          </TableContainer>
+          {filteredAppointments.length > 0 ? (
+            <TableContainer component={Paper}>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell align="center">Nome</TableCell>
+                    <TableCell align="center">Idade</TableCell>
+                    <TableCell align="center">Horário</TableCell>
+                    <TableCell align="center">Status</TableCell>
+                    <TableCell align="center">Conclusão</TableCell>
+                    <TableCell align="center">Ações</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {filteredAppointments.map(
+                    ({
+                      _id,
+                      name,
+                      birthday,
+                      vaccinationTime,
+                      conclusion,
+                      isConcluded,
+                    }) => (
+                      <TableRow key={_id}>
+                        <TableCell align="center">{name}</TableCell>
+                        <TableCell align="center">
+                          {differenceInCalendarYears(
+                            new Date(),
+                            parse(birthday, 'dd-MM-yyyy', new Date()),
+                          )}
+                        </TableCell>
+                        <TableCell align="center">{vaccinationTime}</TableCell>
+                        <TableCell align="center">
+                          {isConcluded ? (
+                            <span className={classes.concluded}>Atendido</span>
+                          ) : (
+                            <span className={classes.notConcluded}>
+                              Aguardando
+                            </span>
+                          )}
+                        </TableCell>
+                        <TableCell align="center">
+                          {conclusion || '-'}
+                        </TableCell>
+                        <TableCell align="center">
+                          {isConcluded ? (
+                            <Button disabled>Concluído</Button>
+                          ) : (
+                            <Button onClick={() => handleDialogOpen(_id)}>
+                              Concluir
+                            </Button>
+                          )}
+                        </TableCell>
+                      </TableRow>
+                    ),
+                  )}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          ) : (
+            <div>
+              <Typography>Nenhum agendamento encontrado.</Typography>
+              <Image
+                imageStyle={{ objectFit: 'contain', marginTop: '50px' }}
+                src={undrawNoData}
+              />
+            </div>
+          )}
         </Grid>
       </Grid>
       <Dialog
