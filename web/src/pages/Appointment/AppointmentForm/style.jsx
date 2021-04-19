@@ -29,6 +29,9 @@ const useStyles = makeStyles({
   },
   button: {
     justifyContent: 'flex-end',
+    '& > *': {
+      width: '100%',
+    },
   },
 });
 

@@ -13,7 +13,6 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
   DialogTitle,
   Table,
   TableBody,
@@ -40,7 +39,7 @@ import useStyle from './style';
 export default function index() {
   const [appointments, setAppointments] = useState([]);
   const [filteredAppointments, setFilteredAppointments] = useState([]);
-  const [dateFilter, setDateFilter] = useState(new Date());
+  const [dateFilter, setDateFilter] = useState('');
 
   const [showDialog, setShowDialog] = useState(false);
   const [conclusionInput, setConclusionInput] = useState('');
@@ -137,6 +136,7 @@ export default function index() {
                   ),
                   endAdornment: <InputAdornment position="end" />,
                 }}
+                label="Data da vacinação"
                 variant="outlined"
               />
             }
@@ -219,16 +219,14 @@ export default function index() {
         </Grid>
       </Grid>
       <Dialog
+        fullWidth
+        maxWidth="sm"
         open={showDialog}
         onClose={handleDialogClose}
-        aria-labelledby="form-dialog-title"
       >
         <form onSubmit={event => handleConclusionSubmit(event)}>
-          <DialogTitle id="form-dialog-title">
-            Concluir Atendimentos
-          </DialogTitle>
+          <DialogTitle id="form-dialog-title">Concluir Atendimento</DialogTitle>
           <DialogContent>
-            <DialogContentText>Detalhes do atendimento</DialogContentText>
             <TextField
               multiline
               onChange={event => setConclusionInput(event.target.value)}
@@ -241,7 +239,7 @@ export default function index() {
             />
           </DialogContent>
           <DialogActions>
-            <button type="submit">Submit</button>
+            <Button type="submit">Enviar</Button>
           </DialogActions>
         </form>
       </Dialog>

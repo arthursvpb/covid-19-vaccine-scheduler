@@ -1,5 +1,9 @@
+/* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
+
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 import { useFormik } from 'formik';
 import * as yup from 'yup';
@@ -20,7 +24,7 @@ import Send from '@material-ui/icons/Send';
 import Schedule from '@material-ui/icons/Schedule';
 import Person from '@material-ui/icons/Person';
 
-import { format } from 'date-fns';
+import { format, setHours, setMinutes } from 'date-fns';
 
 import Page from '../../../components/Page';
 import Button from '../../../components/Button';
@@ -28,6 +32,8 @@ import Button from '../../../components/Button';
 import api from '../../../services/api';
 
 import useStyles from './style';
+
+const MySwal = withReactContent(Swal);
 
 export default function index() {
   const classes = useStyles();
@@ -63,7 +69,7 @@ export default function index() {
     },
     validationSchema,
     onSubmit: async values => {
-      alert(JSON.stringify(values));
+      console.log(JSON.stringify(values));
       try {
         const appointmentForm = {
           name,
@@ -73,7 +79,25 @@ export default function index() {
         };
 
         const response = await api.post('/appointments', appointmentForm);
-        alert(response.data.message);
+
+        MySwal.fire({
+          title: (
+            <>
+              <Typography variant="h5">
+                Sua vacina foi agendada com sucesso, {response.data.data.name}!
+              </Typography>
+
+              <div className={classes.divider} />
+
+              <Typography variant="h6">
+                Esteja presente no dia {response.data.data.vaccinationDate} às{' '}
+                {response.data.data.vaccinationTime}. Lembre-se de levar um
+                documento com foto.
+              </Typography>
+            </>
+          ),
+          icon: 'success',
+        });
       } catch (error) {
         alert(error.response?.data.message || `😓 Something went wrong!`);
       }
@@ -125,6 +149,9 @@ export default function index() {
 
             <Grid item xs={12} md={4} className={classes.birthday}>
               <DatePicker
+                showMonthDropdown
+                showYearDropdown
+                dropdownMode="select"
                 customInput={
                   <TextField
                     InputProps={{
@@ -234,6 +261,8 @@ export default function index() {
                 timeCaption="Time"
                 dateFormat="HH:mm"
                 timeFormat="HH:mm"
+                minTime={setHours(setMinutes(new Date(), 0), 8)}
+                maxTime={setHours(setMinutes(new Date(), 0), 17)}
               />
             </Grid>
 
