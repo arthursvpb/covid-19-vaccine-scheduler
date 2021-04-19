@@ -12,6 +12,11 @@ const useStyles = makeStyles(theme => ({
     color: '#33634d',
     zIndex: 9999,
   },
+  pathSelected: {
+    color: '#33634d',
+    backgroundColor: '#b8ebd4',
+    borderBottom: '2px solid #33634d',
+  },
 }));
 
 export default useStyles;

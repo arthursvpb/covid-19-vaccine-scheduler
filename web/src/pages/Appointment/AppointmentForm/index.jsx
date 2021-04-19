@@ -35,7 +35,7 @@ import useStyles from './style';
 
 const MySwal = withReactContent(Swal);
 
-export default function index() {
+export default function index({ history }) {
   const classes = useStyles();
 
   const [name, setName] = useState('');
@@ -98,6 +98,8 @@ export default function index() {
           ),
           icon: 'success',
         });
+
+        history.push(`/`);
       } catch (error) {
         MySwal.fire({
           title: (
