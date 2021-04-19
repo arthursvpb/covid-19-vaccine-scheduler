@@ -99,7 +99,16 @@ export default function index() {
           icon: 'success',
         });
       } catch (error) {
-        alert(error.response?.data.message || `😓 Something went wrong!`);
+        MySwal.fire({
+          title: (
+            <>
+              <Typography variant="h5">
+                {error.response?.data.message || 'Algo deu errado.'}
+              </Typography>
+            </>
+          ),
+          icon: 'error',
+        });
       }
     },
   });

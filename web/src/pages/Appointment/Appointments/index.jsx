@@ -5,6 +5,9 @@ import DatePicker from 'react-datepicker';
 
 import EventIcon from '@material-ui/icons/Event';
 
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
 // import { makeStyles } from '@material-ui/core/styles';
 import {
   Paper,
@@ -35,6 +38,8 @@ import Button from '../../../components/Button';
 import api from '../../../services/api';
 
 import useStyle from './style';
+
+const MySwal = withReactContent(Swal);
 
 export default function index() {
   const [appointments, setAppointments] = useState([]);
@@ -104,9 +109,26 @@ export default function index() {
 
       setFilteredAppointments(updatedAppointments);
       handleDialogClose();
-      alert(`✅ Success!`);
+
+      MySwal.fire({
+        title: (
+          <>
+            <Typography variant="h5">Vacina concluída com sucesso!</Typography>
+          </>
+        ),
+        icon: 'success',
+      });
     } catch (error) {
-      alert(error.response?.data.message || `😓 Something went wrong!`);
+      MySwal.fire({
+        title: (
+          <>
+            <Typography variant="h5">
+              {error.response?.data.message || 'Algo deu errado.'}
+            </Typography>
+          </>
+        ),
+        icon: 'error',
+      });
     }
   };
 
