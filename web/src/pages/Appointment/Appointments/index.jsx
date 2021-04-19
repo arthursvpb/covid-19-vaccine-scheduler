@@ -3,11 +3,14 @@ import React, { useEffect, useState } from 'react';
 
 import DatePicker from 'react-datepicker';
 
+import EventIcon from '@material-ui/icons/Event';
+
 // import { makeStyles } from '@material-ui/core/styles';
 import {
   Paper,
   Button,
   TextField,
+  InputAdornment,
   Dialog,
   DialogActions,
   DialogContent,
@@ -118,10 +121,19 @@ export default function index() {
           <DatePicker
             customInput={
               <TextField
-                variant="outlined"
                 inputProps={{
                   style: { textAlign: 'center', fontSize: '20px' },
                 }}
+                // eslint-disable-next-line react/jsx-no-duplicate-props
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <EventIcon />
+                    </InputAdornment>
+                  ),
+                  endAdornment: <InputAdornment position="end" />,
+                }}
+                variant="outlined"
               />
             }
             name="dateFilter"

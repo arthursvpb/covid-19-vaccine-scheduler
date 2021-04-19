@@ -7,8 +7,18 @@ import * as yup from 'yup';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-import { Grid, Paper, TextField, Typography } from '@material-ui/core';
+import {
+  Grid,
+  Paper,
+  TextField,
+  Typography,
+  InputAdornment,
+} from '@material-ui/core';
+
+import EventIcon from '@material-ui/icons/Event';
 import Send from '@material-ui/icons/Send';
+import Schedule from '@material-ui/icons/Schedule';
+import Person from '@material-ui/icons/Person';
 
 import { format } from 'date-fns';
 
@@ -89,6 +99,13 @@ export default function index() {
 
             <Grid item xs={12} md={8}>
               <TextField
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Person />
+                    </InputAdornment>
+                  ),
+                }}
                 className={classes.name}
                 fullWidth
                 variant="outlined"
@@ -110,6 +127,13 @@ export default function index() {
               <DatePicker
                 customInput={
                   <TextField
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <EventIcon />
+                        </InputAdornment>
+                      ),
+                    }}
                     variant="outlined"
                     id="birthday"
                     name="birthday"
@@ -138,10 +162,17 @@ export default function index() {
               <Typography variant="h5">Data e hora da vacinação</Typography>
             </Grid>
 
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} md={5}>
               <DatePicker
                 customInput={
                   <TextField
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <EventIcon />
+                        </InputAdornment>
+                      ),
+                    }}
                     variant="outlined"
                     id="vaccinationDate"
                     name="vaccinationDate"
@@ -166,10 +197,17 @@ export default function index() {
               />
             </Grid>
 
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} md={5}>
               <DatePicker
                 customInput={
                   <TextField
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <Schedule />
+                        </InputAdornment>
+                      ),
+                    }}
                     variant="outlined"
                     id="vaccinationTime"
                     name="vaccinationTime"
@@ -199,7 +237,7 @@ export default function index() {
               />
             </Grid>
 
-            <Grid item xs={12} md={4} className={classes.button}>
+            <Grid item xs={12} md={2} className={classes.button}>
               <Button startIcon={<Send />} type="submit">
                 Enviar
               </Button>
