@@ -20,7 +20,7 @@ export default function index() {
   return (
     <Page>
       <Grid container className={classes.grid}>
-        <Grid item xs={12} md={7} className={classes.gridItem}>
+        <Grid item xs={12} md={6} className={classes.gridItem}>
           <Image imageStyle={{ objectFit: 'contain' }} src={undrawDoctors} />
         </Grid>
         <Grid item xs={12} md={5} className={classes.gridItem}>

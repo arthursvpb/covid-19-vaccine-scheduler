@@ -4,7 +4,9 @@ const useStyles = makeStyles({
   grid: {
     alignItems: 'center',
   },
-  gridItem: {},
+  gridItem: {
+    margin: '0 auto',
+  },
   buttons: {
     marginTop: '30px',
     display: 'flex',
