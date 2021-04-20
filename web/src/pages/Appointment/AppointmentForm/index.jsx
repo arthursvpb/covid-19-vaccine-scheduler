@@ -28,6 +28,7 @@ import { format, setHours, setMinutes } from 'date-fns';
 
 import Page from '../../../components/Page';
 import Button from '../../../components/Button';
+import InputMask from '../../../components/InputMask';
 
 import api from '../../../services/api';
 
@@ -166,6 +167,7 @@ export default function index({ history }) {
                 customInput={
                   <TextField
                     InputProps={{
+                      inputComponent: InputMask,
                       startAdornment: (
                         <InputAdornment position="start">
                           <EventIcon />
@@ -205,6 +207,7 @@ export default function index({ history }) {
                 customInput={
                   <TextField
                     InputProps={{
+                      inputComponent: InputMask,
                       startAdornment: (
                         <InputAdornment position="start">
                           <EventIcon />
