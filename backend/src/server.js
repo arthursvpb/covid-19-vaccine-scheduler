@@ -20,6 +20,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(routes);
 
+module.exports = app;
+
 /* Server */
 const { SERVER_PORT: PORT } = process.env;
 app.listen(PORT, () => console.log(`✨ Server is listening at ${PORT}`));
