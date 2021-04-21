@@ -1,0 +1,322 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiContainer-root makeStyles-root-8 MuiContainer-maxWidthLg"
+  >
+    <div
+      class="MuiPaper-root makeStyles-paper-1 MuiPaper-elevation3 MuiPaper-rounded"
+    >
+      <form
+        autocomplete="off"
+      >
+        <div
+          class="MuiGrid-root makeStyles-title-3 MuiGrid-item MuiGrid-grid-xs-12"
+        >
+          <h4
+            class="MuiTypography-root MuiTypography-h4 MuiTypography-alignCenter"
+          >
+            Agendamento Vacina COVID-19
+          </h4>
+        </div>
+        <div
+          class="makeStyles-divider-6"
+        />
+        <div
+          class="MuiGrid-root makeStyles-grid-2 MuiGrid-container"
+        >
+          <div
+            class="MuiGrid-root makeStyles-title-3 MuiGrid-item MuiGrid-grid-xs-12"
+          >
+            <h5
+              class="MuiTypography-root MuiTypography-h5"
+            >
+              Dados pessoais
+            </h5>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-8"
+          >
+            <div
+              class="MuiFormControl-root MuiTextField-root makeStyles-name-4 MuiFormControl-fullWidth"
+            >
+              <label
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
+                data-shrink="true"
+                for="name"
+                id="name-label"
+              >
+                Nome completo
+              </label>
+              <div
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart"
+              >
+                <div
+                  class="MuiInputAdornment-root MuiInputAdornment-positionStart"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                    />
+                  </svg>
+                </div>
+                <input
+                  aria-invalid="false"
+                  class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
+                  id="name"
+                  name="name"
+                  type="text"
+                  value=""
+                />
+                <fieldset
+                  aria-hidden="true"
+                  class="PrivateNotchedOutline-root-9 MuiOutlinedInput-notchedOutline"
+                >
+                  <legend
+                    class="PrivateNotchedOutline-legendLabelled-11 PrivateNotchedOutline-legendNotched-12"
+                  >
+                    <span>
+                      Nome completo
+                    </span>
+                  </legend>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-root makeStyles-birthday-5 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-4"
+          >
+            <div
+              class="react-datepicker-wrapper"
+            >
+              <div
+                class="react-datepicker__input-container"
+              >
+                <div
+                  class="MuiFormControl-root MuiTextField-root"
+                >
+                  <label
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
+                    data-shrink="true"
+                  >
+                    Data de nascimento
+                  </label>
+                  <div
+                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart"
+                  >
+                    <div
+                      class="MuiInputAdornment-root MuiInputAdornment-positionStart"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
+                        />
+                      </svg>
+                    </div>
+                    <input
+                      aria-invalid="false"
+                      class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
+                      type="text"
+                      value=""
+                    />
+                    <fieldset
+                      aria-hidden="true"
+                      class="PrivateNotchedOutline-root-9 MuiOutlinedInput-notchedOutline"
+                    >
+                      <legend
+                        class="PrivateNotchedOutline-legendLabelled-11 PrivateNotchedOutline-legendNotched-12"
+                      >
+                        <span>
+                          Data de nascimento
+                        </span>
+                      </legend>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="makeStyles-divider-6"
+          />
+          <div
+            class="MuiGrid-root makeStyles-title-3 MuiGrid-item MuiGrid-grid-xs-12"
+          >
+            <h5
+              class="MuiTypography-root MuiTypography-h5"
+            >
+              Data e hora da vacinação
+            </h5>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-5"
+          >
+            <div
+              class="react-datepicker-wrapper"
+            >
+              <div
+                class="react-datepicker__input-container"
+              >
+                <div
+                  class="MuiFormControl-root MuiTextField-root"
+                >
+                  <label
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
+                    data-shrink="true"
+                  >
+                    Data da vacina
+                  </label>
+                  <div
+                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart"
+                  >
+                    <div
+                      class="MuiInputAdornment-root MuiInputAdornment-positionStart"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
+                        />
+                      </svg>
+                    </div>
+                    <input
+                      aria-invalid="false"
+                      class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
+                      type="text"
+                      value=""
+                    />
+                    <fieldset
+                      aria-hidden="true"
+                      class="PrivateNotchedOutline-root-9 MuiOutlinedInput-notchedOutline"
+                    >
+                      <legend
+                        class="PrivateNotchedOutline-legendLabelled-11 PrivateNotchedOutline-legendNotched-12"
+                      >
+                        <span>
+                          Data da vacina
+                        </span>
+                      </legend>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-5"
+          >
+            <div
+              class="react-datepicker-wrapper"
+            >
+              <div
+                class="react-datepicker__input-container"
+              >
+                <div
+                  class="MuiFormControl-root MuiTextField-root"
+                >
+                  <label
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
+                    data-shrink="true"
+                  >
+                    Horário da vacina
+                  </label>
+                  <div
+                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart"
+                  >
+                    <div
+                      class="MuiInputAdornment-root MuiInputAdornment-positionStart"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                        />
+                        <path
+                          d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"
+                        />
+                      </svg>
+                    </div>
+                    <input
+                      aria-invalid="false"
+                      class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
+                      type="text"
+                      value=""
+                    />
+                    <fieldset
+                      aria-hidden="true"
+                      class="PrivateNotchedOutline-root-9 MuiOutlinedInput-notchedOutline"
+                    >
+                      <legend
+                        class="PrivateNotchedOutline-legendLabelled-11 PrivateNotchedOutline-legendNotched-12"
+                      >
+                        <span>
+                          Horário da vacina
+                        </span>
+                      </legend>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-root makeStyles-button-7 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-2"
+          >
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-root-13"
+              tabindex="0"
+              type="submit"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                <span
+                  class="MuiButton-startIcon MuiButton-iconSizeMedium"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"
+                    />
+                  </svg>
+                </span>
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                >
+                  Enviar
+                </p>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;

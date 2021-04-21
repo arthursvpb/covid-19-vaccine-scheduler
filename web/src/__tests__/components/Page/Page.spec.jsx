@@ -2,10 +2,10 @@
 import React from 'react';
 
 import { render } from '@testing-library/react';
-import App from '../App';
+import Page from '../../../components/Page';
 
 test('renders correctly', () => {
-  const { asFragment } = render(<App />);
+  const { asFragment } = render(<Page />);
 
   expect(asFragment()).toMatchSnapshot();
 });

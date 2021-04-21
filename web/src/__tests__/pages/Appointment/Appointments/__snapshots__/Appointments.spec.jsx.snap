@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiContainer-root makeStyles-root-6 MuiContainer-maxWidthLg"
+    style="flex-direction: column; justify-content: flex-start;"
+  >
+    <div
+      class="MuiGrid-root makeStyles-grid-2 MuiGrid-container"
+    >
+      <div
+        class="MuiGrid-root makeStyles-title-3 MuiGrid-item MuiGrid-grid-xs-12"
+      >
+        <div
+          class="react-datepicker-wrapper"
+        >
+          <div
+            class="react-datepicker__input-container"
+          >
+            <div
+              class="MuiFormControl-root MuiTextField-root"
+            >
+              <label
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
+                data-shrink="true"
+                for="dateFilter"
+                id="dateFilter-label"
+              >
+                Data da vacinação
+              </label>
+              <div
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+              >
+                <div
+                  class="MuiInputAdornment-root MuiInputAdornment-positionStart"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
+                    />
+                  </svg>
+                </div>
+                <input
+                  aria-invalid="false"
+                  class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+                  id="dateFilter"
+                  name="dateFilter"
+                  style="text-align: center; font-size: 20px;"
+                  type="text"
+                  value=""
+                />
+                <div
+                  class="MuiInputAdornment-root MuiInputAdornment-positionEnd"
+                />
+                <fieldset
+                  aria-hidden="true"
+                  class="PrivateNotchedOutline-root-7 MuiOutlinedInput-notchedOutline"
+                >
+                  <legend
+                    class="PrivateNotchedOutline-legendLabelled-9 PrivateNotchedOutline-legendNotched-10"
+                  >
+                    <span>
+                      Data da vacinação
+                    </span>
+                  </legend>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+      >
+        <div>
+          <p
+            class="MuiTypography-root MuiTypography-body1"
+          >
+            Nenhum agendamento encontrado.
+          </p>
+          <div
+            style="background-color: rgb(255, 255, 255); position: relative;"
+          >
+            <img
+              src="undraw_no_data.svg"
+              style="width: 100%; height: 100%; position: absolute; object-fit: contain; top: 0px; left: 0px; opacity: 0; transition: filterBrightness 2250ms cubic-bezier(0.4, 0.0, 0.2, 1),
+        filterSaturate 3000ms cubic-bezier(0.4, 0.0, 0.2, 1),
+        opacity 1500ms cubic-bezier(0.4, 0.0, 0.2, 1); margin-top: 50px;"
+            />
+            <div
+              style="width: 100%; height: 100%; position: absolute; top: 0px; left: 0px; display: flex; align-items: center; justify-content: center; pointer-events: none;"
+            >
+              <div
+                class="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
+                role="progressbar"
+                style="width: 48px; height: 48px;"
+              >
+                <svg
+                  class="MuiCircularProgress-svg"
+                  viewBox="22 22 44 44"
+                >
+                  <circle
+                    class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+                    cx="44"
+                    cy="44"
+                    fill="none"
+                    r="20.2"
+                    stroke-width="3.6"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

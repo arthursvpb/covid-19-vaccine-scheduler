@@ -2,10 +2,10 @@
 import React from 'react';
 
 import { render } from '@testing-library/react';
-import App from '../App';
+import InputMask from '../../../components/InputMask';
 
 test('renders correctly', () => {
-  const { asFragment } = render(<App />);
+  const { asFragment } = render(<InputMask />);
 
   expect(asFragment()).toMatchSnapshot();
 });
