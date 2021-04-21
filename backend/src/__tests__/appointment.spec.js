@@ -1,13 +1,19 @@
-/* eslint-disable import/order */
+/* eslint-disable no-plusplus */
+/* eslint-disable no-await-in-loop */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-undef */
+const request = require('supertest');
+const app = require('../server');
+
 const {
   generateRandomDate,
   generateRandomTime,
 } = require('../functions/generateRandom.function');
 
-const request = require('supertest');
-const app = require('../server');
+const {
+  MAX_DAILY_APPOINTMENT_DISPONIBILITY,
+  MAX_APPOINTMENT_DISPONIBILITY_PER_TIME,
+} = process.env;
 
 describe('Appointment', () => {
   it('should be able to list all apppointments', async () => {
@@ -61,4 +67,47 @@ describe('Appointment', () => {
       '✅ Agendamento atualizado com sucesso!',
     );
   });
+
+  it('should be able to prioritize aged person', async () => {
+    /**
+     * Young person attributes
+     */
+    const birthday = '01-01-1990';
+    const randomVaccinationDate = generateRandomDate();
+    const randomVaccinationTime = generateRandomTime();
+
+    /**
+     * Generate appointments within MAX_APPOINTMENT_DISPONIBILITY_PER_TIME limit
+     */
+    for (let i = 0; i < MAX_APPOINTMENT_DISPONIBILITY_PER_TIME; i++) {
+      await request(app).post('/appointments').send({
+        name: 'Young person',
+        birthday,
+        vaccinationDate: randomVaccinationDate,
+        vaccinationTime: randomVaccinationTime,
+        isConcluded: false,
+        conclusion: '',
+      });
+    }
+
+    /**
+     * Tries to create and appointment with the same date and time, but as an aged person
+     */
+    const response = await request(app).post('/appointments').send({
+      name: 'Aged person',
+      birthday: '01-01-1920',
+      vaccinationDate: randomVaccinationDate,
+      vaccinationTime: randomVaccinationTime,
+      isConcluded: false,
+      conclusion: '',
+    });
+
+    expect(response.body.message).toEqual(
+      '✅ Você tem prioridade! Agendamento criado com sucesso.',
+    );
+  });
+
+  it('should not be able to create appointment if MAX_DAILY_APPOINTMENT_DISPONIBILITY has exceeded', async () => {});
+
+  it('should not be able to create appointment if MAX_APPOINTMENT_DISPONIBILITY_PER_TIME has exceeded', async () => {});
 });

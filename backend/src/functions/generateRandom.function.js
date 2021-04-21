@@ -13,7 +13,7 @@ const generateFunctions = {
       startDate.getTime() +
       Math.random() * (endDate.getTime() - startDate.getTime());
 
-    return format(randomDate, 'dd/MM/yyyy');
+    return format(randomDate, 'dd-MM-yyyy');
   },
   generateRandomTime() {
     const startDate = new Date(1900, 0, 1);

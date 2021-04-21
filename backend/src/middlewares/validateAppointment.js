@@ -40,7 +40,7 @@ const validateAppointment = async (req, res, next) => {
         ...req.body,
       });
       return res.status(200).json({
-        message: `✅ You have priority! Created appointment successfully.`,
+        message: `✅ Você tem prioridade! Agendamento criado com sucesso.`,
       });
     }
   }
