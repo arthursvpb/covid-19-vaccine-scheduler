@@ -109,5 +109,42 @@ describe('Appointment', () => {
 
   it('should not be able to create appointment if MAX_DAILY_APPOINTMENT_DISPONIBILITY has exceeded', async () => {});
 
-  it('should not be able to create appointment if MAX_APPOINTMENT_DISPONIBILITY_PER_TIME has exceeded', async () => {});
+  it('should not be able to create appointment if MAX_APPOINTMENT_DISPONIBILITY_PER_TIME has exceeded', async () => {
+    /**
+     * Young person attributes
+     */
+    const birthday = '01-01-1990';
+    const randomVaccinationDate = generateRandomDate();
+    const randomVaccinationTime = generateRandomTime();
+
+    /**
+     * Generate appointments within MAX_APPOINTMENT_DISPONIBILITY_PER_TIME limit
+     */
+    for (let i = 0; i < MAX_APPOINTMENT_DISPONIBILITY_PER_TIME; i++) {
+      await request(app).post('/appointments').send({
+        name: 'Young person',
+        birthday,
+        vaccinationDate: randomVaccinationDate,
+        vaccinationTime: randomVaccinationTime,
+        isConcluded: false,
+        conclusion: '',
+      });
+    }
+
+    /**
+     * Tries to create and appointment with the same date and time, but as an young person
+     */
+    const response = await request(app).post('/appointments').send({
+      name: 'Aged person',
+      birthday: '01-01-1989',
+      vaccinationDate: randomVaccinationDate,
+      vaccinationTime: randomVaccinationTime,
+      isConcluded: false,
+      conclusion: '',
+    });
+
+    expect(response.body.message).toEqual(
+      '😓 Esse horário não está disponível..',
+    );
+  });
 });

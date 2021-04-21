@@ -11,6 +11,8 @@ const validateAppointment = async (req, res, next) => {
 
   // Check if pacient is older than the appointment person
   const pacientBirthday = parse(birthday, 'dd-MM-yyyy', new Date());
+  const pacientAge = differenceInCalendarYears(new Date(), pacientBirthday);
+
   const scheduledPacients = await Appointment.find({
     vaccinationDate,
     vaccinationTime,
@@ -33,6 +35,7 @@ const validateAppointment = async (req, res, next) => {
     // The new pacient is older and the scheduled pacient is not aged too.
     if (
       scheduledPacientAge < 60 &&
+      pacientAge >= 60 &&
       pacientBirthday < scheduledPacientBirthday
     ) {
       // eslint-disable-next-line no-await-in-loop
