@@ -19,7 +19,7 @@ const AppointmentController = {
       const appointment = await Appointment.create(body);
 
       return res.status(200).json({
-        message: '✅ Created appointment successfully!',
+        message: '✅ Agendamento criado com sucesso!',
         data: appointment,
       });
     } catch ({ message }) {
@@ -35,7 +35,9 @@ const AppointmentController = {
     try {
       await Appointment.updateOne({ _id: id }, { $set: { ...body } });
 
-      return res.status(200).json({ message: '✅ Updated successfully!' });
+      return res
+        .status(200)
+        .json({ message: '✅ Agendamento atualizado com sucesso!' });
     } catch ({ message }) {
       return res.status(400).json({ message });
     }

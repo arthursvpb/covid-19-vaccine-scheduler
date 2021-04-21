@@ -59,11 +59,15 @@ const validateAppointment = async (req, res, next) => {
     })) < MAX_APPOINTMENT_DISPONIBILITY_PER_TIME;
 
   if (!isDayAvailable) {
-    return res.status(400).json({ message: `😓 This day isn't available.` });
+    return res
+      .status(400)
+      .json({ message: `😓 Esse dia não está disponível..` });
   }
 
   if (!isTimeAvailable) {
-    return res.status(400).json({ message: `😓 This time isn't available.` });
+    return res
+      .status(400)
+      .json({ message: `😓 Esse horário não está disponível..` });
   }
 
   return next();
