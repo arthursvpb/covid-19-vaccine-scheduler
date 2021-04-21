@@ -7,6 +7,9 @@
     "dev": "nodemon --inspect ./src/server.js",
     "test": "jest"
   },
+  "engines": {
+    "npm": "You must run Yarn in this project."
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "date-fns": "^2.20.0",
