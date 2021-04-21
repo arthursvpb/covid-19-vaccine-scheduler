@@ -36,10 +36,15 @@ const validateAppointment = async (req, res, next) => {
       pacientBirthday < scheduledPacientBirthday
     ) {
       // eslint-disable-next-line no-await-in-loop
-      await Appointment.findByIdAndUpdate(scheduledPacient._id, {
-        ...req.body,
-      });
+      const updated = await Appointment.findByIdAndUpdate(
+        scheduledPacient._id,
+        {
+          ...req.body,
+        },
+        { new: true },
+      );
       return res.status(200).json({
+        data: updated,
         message: `✅ Você tem prioridade! Agendamento criado com sucesso.`,
       });
     }
