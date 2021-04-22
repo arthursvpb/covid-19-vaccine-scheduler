@@ -12,10 +12,8 @@
   </a>
 </p>
 
-<br>
-
 <p align="center">
-  <img alt="COVID-19 Vaccine Scheduler" src=".github/undraw_doctors.png" width="100%">
+  <img alt="COVID-19 Vaccine Scheduler" src=".github/preview.png" width="100%">
 </p>
 
 ## 💻 Project
