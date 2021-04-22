@@ -11,7 +11,7 @@ const {
 
 const URI =
   DB_USER || DB_PASS
-    ? `${DB_PROTOCOL}://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_NAME}`
+    ? `${DB_PROTOCOL}://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}`
     : `${DB_PROTOCOL}://${DB_HOST}:${DB_PORT}/${DB_NAME}`;
 
 mongoose.connect(URI, {
