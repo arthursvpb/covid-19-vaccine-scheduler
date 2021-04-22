@@ -26,7 +26,44 @@ This project was built using the following technologies:
 
 ### Backend
 
+- [MongoDB](https://mongodb.com/)
+- [Express](https://expressjs.com/)
+- [NodeJS](https://nodejs.org/en/)
+
 ### Frontend
+
+- [React](https://reactjs.org/)
+- [Material-UI](https://material-ui.com/)
+
+## ▶️ Running the application
+
+The project is deployed by [Netlify](https://www.netlify.com/) but you can run on your local machine.
+
+It is necessary having Git, MongoDB, Node 15.x and Yarn (you can't use NPM in this project).
+
+1. Clone this project
+
+```sh
+git clone https://github.com/arthursvpb/COVID-19-Vaccine-Scheduler.git
+```
+
+2. Run Yarn on both `web` and `backend` folder.
+3. Create `.env` file using `.env.example` model (you can copy `.env.example` file and change it's name to `.env`).
+
+4. Run backend on folder `backend/` using the command:
+
+```sh
+yarn dev
+```
+
+5. Run frontend on folder `web/` using the command:
+
+```sh
+yarn start
+```
+## ✔️ Testing the application
+
+Run the command `yarn test` on both `backend/` and `web/` folder to run tests.
 
 ## 📝 License
 
