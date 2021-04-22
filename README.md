@@ -3,6 +3,8 @@
 <p align="center">
   <a href="#-project">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-tecnologies">Tecnologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-running">Running</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-testing">Testing</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  
   <a href="#-license">License</a>
 </p>
 
@@ -36,7 +38,7 @@ This project was built using the following technologies:
 - [React](https://reactjs.org/)
 - [Material-UI](https://material-ui.com/)
 
-## ▶️ Running the application
+## ▶️ Running
 
 You can see the project [here](https://6081b1e19d86291190ef382f--covid-19-vaccine-scheduler.netlify.app/).
 
@@ -65,7 +67,7 @@ yarn dev
 yarn start
 ```
 
-## ✔️ Testing the application
+## ✔️ Testing
 
 Run the command `yarn test` on both `backend/` and `web/` folder to run tests.
 
