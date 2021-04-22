@@ -24,4 +24,6 @@ module.exports = app;
 
 /* Server */
 const { SERVER_PORT: PORT } = process.env;
-app.listen(PORT, () => console.log(`✨ Server is listening at ${PORT}`));
+app.listen(PORT || 3000, () =>
+  console.log(`✨ Server is listening at ${PORT}`),
+);
