@@ -18,7 +18,8 @@
 
 ## 💻 Project
 
-COVID-19-Vaccine-Scheduler is a web application that can schedule appointments.
+COVID-19-Vaccine-Scheduler is a web application that can schedule appointments for the COVID-19 Vaccine.
+Patients can make schedules and nurses can see and monitor pacients appointments and conclude it when the pacient tooks his vaccine.
 
 ## ✨ Tecnologies
 
@@ -37,7 +38,9 @@ This project was built using the following technologies:
 
 ## ▶️ Running the application
 
-The project is deployed by [Netlify](https://www.netlify.com/) but you can run on your local machine.
+You can see the project [here](https://6081b1e19d86291190ef382f--covid-19-vaccine-scheduler.netlify.app/).
+
+The project was deployed by [Netlify](https://www.netlify.com/) but you can run on your local machine.
 
 It is necessary having Git, MongoDB, Node 15.x and Yarn (you can't use NPM in this project).
 
@@ -61,6 +64,7 @@ yarn dev
 ```sh
 yarn start
 ```
+
 ## ✔️ Testing the application
 
 Run the command `yarn test` on both `backend/` and `web/` folder to run tests.
