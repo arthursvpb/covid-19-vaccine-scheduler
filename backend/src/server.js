@@ -23,7 +23,6 @@ app.use(routes);
 module.exports = app;
 
 /* Server */
-const { SERVER_PORT: PORT } = process.env;
-app.listen(PORT || 8080, () =>
-  console.log(`✨ Server is listening at ${PORT}`),
+app.listen(process.env.PORT || 8080, () =>
+  console.log(`✨ Server is listening. `),
 );
