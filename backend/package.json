@@ -8,6 +8,8 @@
     "test": "jest"
   },
   "engines": {
+    "node": "15.x",
+    "yarn": "1.22.10",
     "npm": "You must run Yarn in this project."
   },
   "dependencies": {
