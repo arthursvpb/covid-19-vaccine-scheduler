@@ -9,8 +9,7 @@
   },
   "engines": {
     "node": "15.x",
-    "yarn": "1.22.10",
-    "npm": "You must run Yarn in this project."
+    "yarn": "1.22.10"
   },
   "dependencies": {
     "cors": "^2.8.5",
