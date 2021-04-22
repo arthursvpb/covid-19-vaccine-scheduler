@@ -25,9 +25,12 @@ export default function index() {
         </Grid>
         <Grid item xs={12} md={5} className={classes.gridItem}>
           <Typography variant="h6">
-            O plano de vacinação contra a Covid-19 está dividido por grupos de
-            prioridade, de acordo com o tempo de exposição e pessoas com maior
-            risco de desenvolver complicações e óbito pela doença.
+            Este projeto é uma simulação de um sistema de agendamento de
+            pacientes e monitoramento de enfermeiros em decorrência da vacinação
+            contra a COVID-19. A disponibilidade são de 20 vagas por dia, com o
+            máximo de 2 agendamentos para o mesmo horário. Está dividido por
+            grupos de prioridade, de acordo com o tempo de exposição e pessoas
+            com maior risco de desenvolver complicações e óbito pela doença.
           </Typography>
           <Grid item className={classes.buttons}>
             <Button
