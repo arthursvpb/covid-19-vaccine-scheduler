@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="#-project">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-tecnologies">Tecnologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-technologies">Tecnologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-running">Running</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-testing">Testing</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  
   <a href="#-license">License</a>
@@ -23,7 +23,7 @@
 COVID-19-Vaccine-Scheduler is a web application that can schedule appointments for the COVID-19 Vaccine.
 Patients can make schedules and nurses can see and monitor pacients appointments and conclude it when the pacient tooks his vaccine.
 
-## ✨ Tecnologies
+## ✨ Technologies
 
 This project was built using the following technologies:
 
